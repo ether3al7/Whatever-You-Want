@@ -1,0 +1,97 @@
+* {
+    box-sizing: border-box;
+}
+
+/* img.starter-bg {
+    width: fill;
+    height: fill;
+    object-fit: contain;
+
+
+    background: linear-gradient(to top, #12cdd4, #10aca6, #9510ac, #ff16cf, #f594b7);
+
+
+} */
+
+.starter-bg {
+    background-image:
+    linear-gradient(to top, rgb(18, 205, 212, 0.52),rgb(16, 172, 166, 0.73),rgb(149, 16, 172, 0.73)),
+    url('../../images/starter-background.jpg');
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    /* color: white; */
+    
+}
+
+.logo-btn {
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border-radius: 2px;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    overflow: hidden;
+    
+    position:absolute;
+    top: 50%;
+    left:50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+     transform: translate(-50%, -50%);
+    
+}
+
+.logo-btn:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .75);
+}
+/* .login-btn {
+    border-radius: 10%;
+} */
+.register-btn, .login-btn {
+    border-radius: 20px;
+}
+.logo-modal-btn-container {
+    border-radius: 45px;
+    background: linear-gradient(to bottom right, rgb(18, 205, 212, 0.52),rgb(16, 172, 166, 0.73),rgb(149, 16, 172, 0.73));
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
+    width: 220px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 32px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+  }
+  
+  .logo-modal-btn-container{
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
+  }
+  
+  .logo-modal-btn-container:after {
+    
+    content: '<< Back';
+    position: absolute;
+    opacity: 0;  
+    top: 14px;
+    left: -20px;
+    transition: 0.5s;
+  }
+  
+  .logo-modal-btn-container:hover{
+    padding-right: 24px;
+    padding-left:8px;
+  }
+  
+  .logo-modal-btn-container:hover:after {
+    opacity: 1;
+    left: 10px;
+  }
+
+
