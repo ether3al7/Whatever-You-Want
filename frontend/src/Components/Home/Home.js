@@ -1,11 +1,14 @@
 import {Link} from 'react-router-dom'
+import Search from '../ViewRestaurants/Search'
+import ViewRestaurants from '../ViewRestaurants/ViewRestaurants'
+import data from "../ViewRestaurants/data"
 
-function Home(props) {
+export default function Home() {
     return(
         <div>
-            You must be authorized to see this page.
+            <ViewRestaurants 
+                restaurants={data}
+            />
         </div>
     )
 }
-
-export default Home;
