@@ -30,8 +30,19 @@ public class JdbcInviteDao implements InviteDao{
     }
 
     @Override
-    public List<Invite> listInvite(int id) {
-        return null;
+    public List<Invite> listInvite(int userId) {
+        List<Invite> invites = new ArrayList<>();
+
+        String sql = "SELECT * FROM invite " +
+                "JOIN account ON invite.account_from = account.account_id " +
+                "WHERE account_to = (SELECT account_id FROM account WHERE user_id = ?) " +
+                "OR account_from = (SELECT account_id FROM account WHERE user_id = ?);";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,userId, userId);
+        while(results.next()){
+            invites.add(mapRowToInvite(results));
+        }
+        return invites;
     }
 
     @Override
@@ -41,7 +52,6 @@ public class JdbcInviteDao implements InviteDao{
 
     @Override
     public void updateInvite(Invite invite, int statusID) {
-
     }
 
     @Override
