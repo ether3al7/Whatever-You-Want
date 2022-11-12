@@ -41,7 +41,7 @@ public class RTController {
         int from = 0;
         for(Account account : accountList){
             if(account.getAccountID() == fromID){
-                from = account.getUserID();a
+                from = account.getUserID();
             }
         }
 
@@ -64,5 +64,5 @@ public class RTController {
         return accountDao.getAccountId(userID);
     }
 
-    @RequestMapping(path = "/{id}/")
+
 }
