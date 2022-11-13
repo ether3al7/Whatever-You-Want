@@ -7,10 +7,7 @@ import com.techelevator.dao.InviteDao;
 import com.techelevator.model.User;
 import com.techelevator.dao.UserDao;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import org.apache.logging.log4j.message.Message;
 import org.springframework.http.HttpMessage;
@@ -62,6 +59,24 @@ public class RTController {
     @RequestMapping(path = "/user/{id}", method = RequestMethod.GET)
     public int getAccountIDByUserID (@PathVariable("id") int userID) {
         return accountDao.getAccountId(userID);
+    }
+
+    @RequestMapping(path = "/{id}/pending_invite", method = RequestMethod.GET)
+    public List<Invite> getPendingInvites(@PathVariable("id") int userId){
+        List<Invite> invites = new ArrayList<>();
+        return invites;
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/send", method = RequestMethod.POST)
+    public void sendInvite(@Valid @RequestBody Invite invite){
+        invite.setInviteStatusId(1);
+        inviteDao.createInvite(invite);
+    }
+
+    @RequestMapping(path = "/update/{id}", method = RequestMethod.PUT)
+    public void updateInvite(@Valid @RequestBody Invite invite, @PathVariable("id") int statusID){
+        inviteDao.updateInvite(invite,statusID);
     }
 
 

@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.InvalidInviteException;
 import com.techelevator.model.Invite;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -46,8 +47,31 @@ public class JdbcInviteDao implements InviteDao{
     }
 
     @Override
-    public Invite createInvite(Invite invite) {
-        return null;
+    public Invite createInvite(Invite invite) throws InvalidInviteException {
+        if (invite.getFromAccountId() == invite.getToAccountId()){
+            throw new InvalidInviteException();
+        }
+        if(invite.getInviteTypeId() == 1){
+            String sql = "INSERT INTO invite(account_from, account_to, invite_status_id, invite_type_id) " +
+                    "VALUES (?,?,?,?) RETURNING invite_id;";
+
+            Integer inviteId = jdbcTemplate.queryForObject(sql, Integer.class, invite.getInviteTypeId(),
+                    invite.getInviteStatusId(), invite.getFromAccountId(), invite.getToAccountId());
+
+            if(invite.getInviteStatusId() == 2){
+                updateFromAccount(invite.getId(), invite.getToAccountId());
+                updateToAccount(invite.getId(), invite.getFromAccountId());
+            }
+            return getInvite(inviteId);
+        }
+
+        return invite;
+    }
+
+    private void updateToAccount(int id, int fromAccountId) {
+    }
+
+    private void updateFromAccount(int id, int toAccountId) {
     }
 
     @Override

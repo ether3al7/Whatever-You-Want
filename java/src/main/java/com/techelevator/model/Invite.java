@@ -7,6 +7,8 @@ public class Invite {
     private int toAccountId;
     private int fromAccountId;
     private int inviteStatusId;
+    private int inviteTypeId;
+
 
     public Invite(){};
 
@@ -36,5 +38,17 @@ public class Invite {
 
     public void setInviteStatusId(int invite_status_id) {
         this.inviteStatusId = inviteStatusId;
+    }
+
+    public int getInviteTypeId() {
+        return inviteTypeId;
+    }
+
+    public void setInviteTypeId(int inviteTypeId) {
+        this.inviteTypeId = inviteTypeId;
+    }
+
+    public int getInviteStatusId() {
+        return inviteStatusId;
     }
 }
