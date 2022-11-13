@@ -1,10 +1,14 @@
 import { Component } from 'react'
 import {Link} from 'react-router-dom'
+import { useNavigate } from 'react-router'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import {addToken, addUser} from '../../Redux/actionCreators'
 import {baseUrl} from '../../Shared/baseUrl'
 import axios from 'axios'
+import '../Starter/Starter.css'
+import Navbar from '../Navbar'
+import Register from '../Register/Register'
 
 
 
@@ -42,10 +46,14 @@ class Login extends Component {
             [event.target.name]: event.target.value
         })
     }
+    navigateToRegister = (event) => {
+        const navigate = useNavigate();
+        navigate('/register')
+    }
 
     render(){
         return(
-            <div>
+            <div className='login'>
                 <h1>Please Sign In</h1>
                 <label class="sr-only">Username</label>
                 <input
@@ -58,6 +66,7 @@ class Login extends Component {
                     onChange={this.handleInputChange}
                     required
                 />
+                <br/>
                 <label class="sr-only">Password</label>
                 <input
                     type="password"
@@ -69,8 +78,9 @@ class Login extends Component {
                     onChange={this.handleInputChange}
                     required
                 />
-                <Link to="/register">Need an account?</Link>
-                <button type="submit" onClick={this.handleLogin}>Sign in</button>
+                <br/>
+                <Link to="/register" onClick={this.navigateToRegister}>Need an account?</Link>
+                <button type="submit" onClick={this.handleLogin} className='login-btn'>Sign in</button>
             </div>
         )
     }
