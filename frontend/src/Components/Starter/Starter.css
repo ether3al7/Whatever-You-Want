@@ -1,5 +1,7 @@
 * {
     box-sizing: border-box;
+   
+    
 }
 
 /* img.starter-bg {
@@ -16,13 +18,18 @@
 .starter-bg {
     background-image:
     linear-gradient(to top, rgb(18, 205, 212, 0.52),rgb(16, 172, 166, 0.73),rgb(149, 16, 172, 0.73)),
-    url('../../images/starter-background.jpg');
+    url('../../images/starter-background.jpg') ;
     width: 100vw;
-    height: 100vh;
+    height: calc(100vh - 150px) scroll;
+    /* height: 100vh; */
     background-size: cover;
+    background-repeat: no-repeat;
     /* color: white; */
+    background-attachment: fixed;
+    background-position: center;
     
 }
+
 
 .logo-btn {
     background-color: transparent;
@@ -40,6 +47,23 @@
     -ms-transform: translate(-50%, -50%);
      transform: translate(-50%, -50%);
     
+}
+.logo-btn2 {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border-radius: 2px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  overflow: hidden;
+  padding-left: 10px;
+  margin: auto;
+  
+  
+  
+}
+.nav-logo {
+  max-width: 200px;
 }
 
 .logo-btn:hover {
@@ -63,7 +87,7 @@
     width: 220px;
     transition: all 0.5s;
     cursor: pointer;
-    margin: 32px;
+    margin: 60px;
     box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
   }
   
@@ -76,8 +100,8 @@
   
   .logo-modal-btn-container:after {
     
-    content: '<< Back';
-    position: absolute;
+    /* content: '<< Back'; */
+    position: fixed;
     opacity: 0;  
     top: 14px;
     left: -20px;
@@ -93,5 +117,8 @@
     opacity: 1;
     left: 10px;
   }
+
+ 
+
 
 

@@ -5,7 +5,7 @@ import { Router, useNavigate } from 'react-router'
 import { baseUrl } from '../../Shared/baseUrl'
 import '../Starter/Starter.css'
 import Starter from '../Starter/LoginStarter'
-import Navbar from '../Navbar'
+import Navbar from '../Navbar/Navbar'
 import Login from '../Login/Login'
 import Main from '../Main/Main'
 import Home from '../Home/Home'
@@ -109,17 +109,10 @@ class Register extends Component{
                 />
                 <br/>
                 
-                <Link to="/login" onClick={this.navigateToLogin}>Have an account?</Link>
-                <button type="submit" onClick={this.handleSubmit && this.navigateHome} className='register-btn'>Register</button>
+                <Link to="/login"><button className='login-btn-2' onClick={() => this.setState({showLogin: this.state.showLogin})}>Login</button></Link>
+                {/* <Link to="/login" onClick={this.navigateToLogin}>Have an account?</Link> */}
+                <button type="submit" onClick={this.handleSubmit} className='register-btn-2'>Register</button>
                 
-                     
-                
-                {/* <Router>
-                    <Route path='/login' component={() => <Login/>}/>
-                    <Route path='/register'component={() => <Register/>}/>
-                    <Route path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
-                    <Redirect to='/login'/>
-                </Router> */}
             </div>
             
         )

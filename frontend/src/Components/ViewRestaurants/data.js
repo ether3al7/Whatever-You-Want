@@ -7,7 +7,7 @@ export default [
         openingTime: "11:00 am",
         closingTime: "11:00 pm",
         phone: "(620) 624-2422",
-        imageUrl: "./images/applebees.png"
+        imageUrl: require("./images/applebees.png")
     },
     
     {
@@ -18,7 +18,7 @@ export default [
         openingTime: "10:00 am",
         closingTime: "10:00 pm",
         phone: "(620) 604-5000",
-        imageUrl: "./images/sinaloa.png"
+        imageUrl: require("./images/sinaloa.png")
     },
     
     {
@@ -29,7 +29,7 @@ export default [
         openingTime: "6:00 am",
         closingTime: "9:00 pm",
         phone: "",
-        imageUrl: "./images/ranchito.png"
+        imageUrl: require("./images/ranchito.png")
     },
 
     {
