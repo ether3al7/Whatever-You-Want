@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+.starter-bg-2 {
+    background-image:
+    linear-gradient(to top, rgb(18, 205, 212, 0.52),rgb(16, 172, 166, 0.73),rgb(149, 16, 172, 0.73)),
+    url('../../../images/starter-background.jpg');
+    /* width: 100vw; */
+    /* height: 100vh; */
+    background-size: cover;
+    height: calc(100vh - 120px);   
+}
+.about-us-container{
+    /* height: calc(100vh - 120px); */
+    /* display: flex; */
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.about-us{
+    grid-area: aboutus;
+}
+.connect{
+    grid-area: connect;
+}
+.card-container {
+    grid-area: card-container;
+}
+@media only screen and (max-width: 1915px) {
+    .about-us-container {
+        /* height: calc(100vh - 120px); */
+        background: cover;
+        display: grid;
+        grid-template-columns: 3fr;
+        grid-template-areas: 
+        "aboutus"
+        "connect"
+        "card-container";
+        gap: 155px;
+        justify-content: center;
+        text-align: center;
+        
+    }
+  }
+.about-us, .connect {
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 350px;
+    text-align: center;
+    color: white;
+    height: calc(100vh - 959.7px);
+}
+
+.card-container{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: center;
+}
+.card-1:hover, .card-2:hover, .card-3:hover, .card-4:hover {
+    transform: scale(1.15);
+    transition: 0.7s;
+    z-index: 1000;
+    
+    
+}
+
+.cardText {
+    /* line: height 5px; ; */
+}
+
+.card-body-1 {
+    border-radius: 45px;
+    background: linear-gradient(to bottom right, rgb(18, 205, 212, 0.52),rgb(16, 172, 166, 0.73),rgb(149, 16, 172, 0.73));
+    border: none;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 220px;
+    height: 25px;
+    margin: 32px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+.card-body-2 {
+    border-radius: 45px;
+    background: linear-gradient(to bottom right, rgb(18, 205, 212, 0.52),rgb(16, 172, 166, 0.73),rgb(149, 16, 172, 0.73));
+    border: none;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 220px;
+    height: 130px;
+    margin: 32px;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+.card-img {
+    border-radius: 50%;
+    width: 100%;
+}
+.linkedin {
+    margin: 10px;
+    position: absolute;
+    top: 95%;
+    left: 45%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    outline: auto;
+    color: #12cdd4;
+}
+.href {
+    
+    color: #12cdd4;
+}

@@ -1,14 +1,12 @@
 import { Component } from 'react'
-import {Link} from 'react-router-dom'
 import { useNavigate } from 'react-router'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
+import {withRouter, Link} from 'react-router-dom'
 import {addToken, addUser} from '../../Redux/actionCreators'
 import {baseUrl} from '../../Shared/baseUrl'
 import axios from 'axios'
 import '../Starter/Starter.css'
-import Navbar from '../Navbar'
-import Register from '../Register/Register'
+import './Login.css'
 
 
 
@@ -79,7 +77,11 @@ class Login extends Component {
                     required
                 />
                 <br/>
-                <Link to="/register" onClick={this.navigateToRegister}>Need an account?</Link>
+
+                {/* <button className='register-btn' > */}
+                <Link to="/register" ><button className='register-btn' >Register</button></Link>
+                {/* </button> */}
+                {/* <Link to="/register" onClick={this.navigateToRegister}>Need an account?</Link> */}
                 <button type="submit" onClick={this.handleLogin} className='login-btn'>Sign in</button>
             </div>
         )
