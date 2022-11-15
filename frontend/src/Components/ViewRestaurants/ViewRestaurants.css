@@ -1,0 +1,74 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin-top: 10px;
+    background-image:
+    linear-gradient(to top, rgb(18, 205, 212, 0.52),rgb(16, 172, 166, 0.73),rgb(149, 16, 172, 0.73)),
+    url('../../images/starter-background.jpg');
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+}
+
+.list {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.restaurant {
+    display: flex;
+    color: white;
+    background: linear-gradient(to bottom right, rgb(18, 205, 212, 0.52),rgb(16, 172, 166, 0.73),rgb(149, 16, 172, 0.73));
+    align-items: center; 
+    width: 35rem;
+    height: 16rem;
+    justify-content: space-around;
+    border: thick solid black;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    padding: 15px;   
+}
+
+.info h2 {
+    font-size: 1.5rem;
+    text-align: center;   
+}
+
+.info h3 {
+    font-size: 1rem;
+}
+
+.img {
+    max-width: 300px;
+}
+
+.sign {
+    font-size: 2rem;
+    text-align: center;
+}
+
+.call-img:hover{
+    filter: invert(73%) sepia(79%) saturate(1213%) hue-rotate(127deg) brightness(88%) contrast(87%);
+}
+
+.call-btn {
+    justify-self: center;
+    padding: 10px;
+}
+
+.call-img {
+    height: 3rem;
+    filter: invert(100%);
+}
+
+

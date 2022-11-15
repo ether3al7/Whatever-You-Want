@@ -1,5 +1,6 @@
 import React from "react"
 import Restaurant from "./Restaurant"
+import './ViewRestaurants.css';
 
 export default function ViewRestaurants(props){
 
@@ -16,7 +17,7 @@ export default function ViewRestaurants(props){
      )
 
     return (
-        <div>
+        <div className="list">
             {restaurants}
         </div>
     )
