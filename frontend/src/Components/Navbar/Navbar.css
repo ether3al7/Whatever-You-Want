@@ -17,8 +17,8 @@
   /* height: calc(100vh - 120px); */
  
 }
-.hamburger {
-  display: inline-block;
+.hamburger-container {
+ background-color: black;
 
 }
 

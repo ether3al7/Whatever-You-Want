@@ -11,8 +11,8 @@ export default function AboutUs() {
  
 
   return (
-    <>
     
+    <div className='aboutus-bg'>
     <div className='about-us-container'>
     <div className='about-us'>
         <h1>About Us</h1>
@@ -172,7 +172,8 @@ export default function AboutUs() {
 
 </div>
 </div>
+</div>
 
-    </>
+  
   )
 }

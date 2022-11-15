@@ -7,6 +7,7 @@ import {baseUrl} from '../../Shared/baseUrl'
 import axios from 'axios'
 import '../Starter/Starter.css'
 import './Login.css'
+import { Input } from 'reactstrap'
 
 
 
@@ -52,9 +53,9 @@ class Login extends Component {
     render(){
         return(
             <div className='login'>
-                <h1>Please Sign In</h1>
-                <label class="sr-only">Username</label>
-                <input
+                <h1 className='sign-in'>Please Sign In</h1>
+                {/* <label class="sr-only">Username</label> */}
+                <Input
                     type="text"
                     id="username"
                     name="username"
@@ -65,8 +66,8 @@ class Login extends Component {
                     required
                 />
                 <br/>
-                <label class="sr-only">Password</label>
-                <input
+                {/* <label class="sr-only">Password</label> */}
+                <Input
                     type="password"
                     id="password"
                     name="password"

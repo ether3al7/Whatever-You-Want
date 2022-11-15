@@ -50,7 +50,7 @@ class Main extends Component {
                             <Link to='/home' className='nav-home'>Home</Link>
                             </button>
                             <button className='nav-btn'>
-                            <Link to='/login' onClick={this.handleLogout} className='nav-logout'>Logout</Link>
+                            <Link to='/home' onClick={this.handleLogout} className='nav-logout'>Logout</Link>
                             </button> 
                             <button className='nav-btn'>
                             <Link to='/invite' className='nav-invite'>Make an invitation</Link>

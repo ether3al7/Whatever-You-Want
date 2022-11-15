@@ -24,6 +24,7 @@ export default function Starter() {
       <LoginModal open={isOpen} onClose={() => setIsOpen(false)} className='login-modal'>
         <Login />
       </LoginModal>
+      
     </div>
     </>
     

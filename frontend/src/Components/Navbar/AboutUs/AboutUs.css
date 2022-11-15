@@ -8,7 +8,26 @@
     /* width: 100vw; */
     /* height: 100vh; */
     background-size: cover;
-    height: calc(100vh - 120px);   
+    height: calc(100vh - 60px);   
+
+    background-repeat: no-repeat;
+    /* color: white; */
+    background-attachment: fixed;
+    background-position: center;
+}
+.aboutus-bg {
+    background-image:
+    linear-gradient(to top, rgb(18, 205, 212, 0.52),rgb(16, 172, 166, 0.73),rgb(149, 16, 172, 0.73)),
+    url('../../../images/starter-background.jpg');
+    /* width: 100vw; */
+    /* height: 100vh; */
+    background-size: cover;
+    height: calc(100vh - 60px) scroll;   
+
+    background-repeat: no-repeat;
+    /* color: white; */
+    background-attachment: fixed;
+    background-position: center;
 }
 .about-us-container{
     /* height: calc(100vh - 120px); */
