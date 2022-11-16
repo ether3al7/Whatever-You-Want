@@ -27,7 +27,7 @@ body {
     color: white;
     background: linear-gradient(to bottom right, rgb(18, 205, 212, 0.52),rgb(16, 172, 166, 0.73),rgb(149, 16, 172, 0.73));
     align-items: center; 
-    width: 35rem;
+    width: 38rem;
     height: 16rem;
     justify-content: space-around;
     border: thick solid black;
@@ -55,6 +55,7 @@ body {
 .sign {
     font-size: 2rem;
     text-align: center;
+    font-weight: bold;
 }
 
 .call-img:hover{
