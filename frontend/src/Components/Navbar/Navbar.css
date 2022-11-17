@@ -42,7 +42,7 @@
     width: 100%;
     /* display: flex; */
     align-items: center;
-    /* position: relative; */
+    position: relative;
     padding: 0.5rem 0rem;
     color: white;
     box-shadow: 0 2px 2px 2px rgba(9, 9, 9,.22);
@@ -71,10 +71,11 @@
   .nav-logo {
     display: inline-block;
     /* background-image: url(../../images/Whatever-4.png) no-repeat; */
-    max-width: 135px;
+    max-width: 155px;
     position: center;
-    filter: invert(75%);
+    /* filter: invert(75%); */
     overflow: hidden;
+    padding-right: 10px;
   }
 
   /* <!-- Footer --> */

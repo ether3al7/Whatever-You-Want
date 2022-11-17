@@ -1,13 +1,21 @@
 import React, { useState } from 'react'
-import { Fade as Hamburger } from 'hamburger-react'
-import './Navbar.css'
-import '../Starter/Starter.css'
-import '../Register/Register.css'
-import LoginModal from '../Login/LoginModal'
-import Login from '../Login/Login'
-import { Button, Collapse, Container, Navbar, NavbarToggler } from 'reactstrap'
-import { Link } from 'react-router-dom'
-import HamburgerMenu from './HamburgerMenu'
+import { Fade as Hamburger } from 'hamburger-react';
+import './Navbar.css';
+import '../Starter/Starter.css';
+import '../Register/Register.css';
+import LoginModal from '../Login/LoginModal';
+import Login from '../Login/Login';
+import LoginStarter from '../Starter/LoginStarter';
+import { Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Link, NavLink, Route, Switch, Redirect } from "react-router-dom";
+import RegisterStarter from '../Starter/RegisterStarter';
+import ViewRestaurants from '../ViewRestaurants/ViewRestaurants';
+import AboutUs from '../Navbar/AboutUs/AboutUs';
+import Invite from '../Invite/Invite';
+import InviteList from '../Invite/InviteList';
+import "bootstrap/dist/css/bootstrap.min.css"; 
+import Home from '../Home/Home'
+
 
 
 
@@ -17,14 +25,25 @@ export default function Header() {
   const [showAnimated, setShowAnimated] = useState(false);
 
   return (
-    <div className='starter-bg-2'>
-    <div className='header-container'>
-    {/* <HamburgerMenu /> */}
-      {/* <div className='nav-btn-container'>
-         <button className='logo-btn-nav' onClick={() => setIsOpen(true)} >
-          <img src={require('../../images/Whatever-4.png')} alt='main-logo' className='nav-logo'/>
-         </button>
-      </div> */}
+<>
+<div className='starter-bg-2'>
+    <Navbar collapseOnSelect  expand="lg" bg="" variant="dark" className='header-container'>
+                              <Container fluid >
+                              <img src={require('../../images/Whatever-4.png')} alt='main-logo' className='nav-logo'/>
+                              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                                <Navbar.Collapse id="responsive-navbar-nav">
+                             <Nav className='header-nav-links'>
+                                <Nav.Link as={Link} to='/' className="nav-btn">Home</Nav.Link>
+                                <Nav.Link as={Link} to='/home' className='nav-logout'>Logout</Nav.Link>
+                                <Nav.Link as={Link} to='/invite' className="nav-btn">Invite</Nav.Link>
+                              </Nav>
+                                </Navbar.Collapse>
+                              </Container>
+                            </Navbar> 
+
+    
+    <div>
+
       <div>
       <button className='logo-btn3' onClick={() => setIsOpen(true)}>
           <img src={require('../../images/Whatever-4.png')} alt='main-logo'/>
@@ -110,5 +129,6 @@ export default function Header() {
       {/* </div> */}
     </div>
     </div>
+    </>
   )
 }
