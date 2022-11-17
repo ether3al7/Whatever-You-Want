@@ -7,7 +7,7 @@ import Header from '../Header'
 import Footer from '../Footer'
 import './AboutUs.css'
 
-export default function AboutUs() {
+const AboutUs = () => {
  
 
   return (
@@ -175,5 +175,6 @@ export default function AboutUs() {
 </div>
 
   
-  )
-}
+  );
+};
+export default  AboutUs;

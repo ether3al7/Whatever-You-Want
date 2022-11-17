@@ -1,16 +1,13 @@
 import React, {Component, useState } from 'react'
 import {Switch, Route, Redirect, Link, withRouter} from 'react-router-dom'
-import Login from '../Login/Login'
 import RegisterStarter from '../Starter/RegisterStarter'
 import ViewRestaurants from '../ViewRestaurants/ViewRestaurants'
 import AboutUs from '../Navbar/AboutUs/AboutUs'
-import RegisterModal from '../Register/RegisterModal'
 import Header from '../Navbar/Header'
 import Home from '../Home/Home'
 import {addToken, deleteUser} from '../../Redux/actionCreators'
 import {connect} from 'react-redux'
 import LoginStarter from '../Starter/LoginStarter'
-import Starter from '../Starter/Starter'
 import '../Starter/Starter.css'
 import '../Register/Register.css'
 
@@ -29,6 +26,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 class Main extends Component {
+    
     constructor(props){
         super(props);
     }
@@ -45,7 +43,8 @@ class Main extends Component {
             
             <div>
                 {this.props.token.token !== undefined ?
-                        <div>
+                        <div className='header-container'>
+                        
                             <button className='nav-btn'>
                             <Link to='/home' className='nav-home'>Home</Link>
                             </button>
@@ -59,7 +58,7 @@ class Main extends Component {
 
                         </div>  
                     : 
-                     <Header className='starter-bg-2'/>
+                     <Header />
                       
                         
                 }
@@ -73,7 +72,7 @@ class Main extends Component {
                     <Route exact path='/view' component={() => <ViewRestaurants />}/>
                     <Route exact path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
                     <Route exact path='/aboutus' component={() => <AboutUs />}/>
-                    <Redirect to='/home'/>
+                    {/* <Redirect to='/home'/> */}
                 </div>    
                 </Switch>
             </div>

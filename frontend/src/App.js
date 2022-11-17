@@ -24,13 +24,6 @@ function App() {
         <Main/>
         <Footer />
       </>  
-        {/* <Starter /> */}
-        {/* <Home /> */}
-        {/* <Navbar /> */}
-        {/* <Header /> */}
-        {/* <RegisterModal /> */}
-        {/* <RegisterStarter /> */}
-        {/* <LoginStarter /> */}
       </BrowserRouter>
     </Provider>
   );
