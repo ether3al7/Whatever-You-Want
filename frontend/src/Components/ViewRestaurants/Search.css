@@ -1,0 +1,81 @@
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+
+.search {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.welcome {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 350px;
+    padding: 10px;
+}
+
+.welcome h1 {
+    font-size: 4rem;
+    text-align: center;
+    padding: 20px;
+    color: white;
+}
+
+.welcome img {
+    padding: 20px;
+}
+
+.main {
+    padding: 20px;
+}
+
+.main h3 {
+    text-align: center;
+    font-size: 2.5rem;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    color: white;
+}
+
+.input {
+    display: flex;
+    justify-content: space-around;
+}
+
+.zipcode, .city {
+    width: 200px;
+    font-size: 2rem;
+    padding: 30px;
+    text-align: center;
+    border-radius: 20px;
+    height: 50px;
+    font-weight: bold;
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    padding: 30px;
+    padding-top: 50px;
+}
+
+.submit button {
+    width: 200px;
+    font-size: 2rem;
+    border-radius: 20px;
+    height: 50px;
+    font-weight: bold;
+    background: linear-gradient(to bottom right, rgb(18, 205, 212, 0.52),rgb(16, 172, 166, 0.73),rgb(149, 16, 172, 0.73));
+    color: #fff;
+    border: none;
+    box-shadow: 0 10px 20px -8px rgba(0, 0, 0,.7);
+}
+
+.submit button:hover {
+    background: linear-gradient(to top left, rgb(255, 22, 207, 0.52), rgb(149, 16, 172, 0.73));
+}

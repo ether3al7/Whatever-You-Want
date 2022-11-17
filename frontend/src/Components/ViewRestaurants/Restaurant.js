@@ -29,7 +29,7 @@ export default function Restaurants(props) {
     return(
         <div className="restaurant">
             <section className="img-section">
-                {props.imageUrl && <img className="img" src={props.imageUrl}/>}
+                {props.imageUrl && <img className="img" alt={props.name} src={props.imageUrl}/>}
             </section>
             <section className="info">
                 <h2>{props.name}</h2>
@@ -39,7 +39,7 @@ export default function Restaurants(props) {
                 <h3 className="sign">{isOpen ? 'Open Now' : 'Closed'}</h3>  
             </section>
             <section className="call-btn">
-            {props.phone && <a href={callNumber}><img className="call-img" src={require("././images/call.png")}/></a>}
+            {props.phone && <a href={callNumber}><img className="call-img" alt="Call" src={require("././images/call.png")}/></a>}
             </section>
 
         </div>
