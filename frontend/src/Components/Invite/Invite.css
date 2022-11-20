@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+    
+}
+.invite-container {
+    /* height: 100vh; */
+    background-color: aliceblue;
+    height: 70px;
+    width: 100%;
+    /* display: flex; */
+    align-items: center;
+    position: relative;
+    padding: 0.5rem 0rem;
+    color: white;
+    box-shadow: 0 2px 2px 2px rgba(9, 9, 9,.22);
+}
+/* .picker {
+    display: grid;
+    place-items: center;
+    height: 100vh;
+} */
+.picker {
+    background-color: #12cdd4;
+    border: 1px solid black;
+    padding:  2px;
+    margin-top: 1;
+    
+}

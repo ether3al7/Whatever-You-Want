@@ -11,7 +11,8 @@ import Login from './Components/Login/Login';
 import LoginStarter from './Components/Starter/LoginStarter'
 import Header from './Components/Navbar/Header';
 import Footer from './Components/Navbar/Footer';
-
+import Invite from './Components/Invite/Invite';
+import Api from './services/Api';
 
 
 const store = ConfigureStore();
@@ -24,6 +25,7 @@ function App() {
       <>
         <Main/>
         <Footer />
+        {/* <Api /> */}
       </>  
       </BrowserRouter>
     </Provider>

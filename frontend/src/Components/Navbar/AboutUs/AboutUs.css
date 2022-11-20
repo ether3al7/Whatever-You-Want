@@ -57,16 +57,19 @@
         gap: 155px;
         justify-content: center;
         text-align: center;
+        padding: 0px;
         
     }
   }
 .about-us, .connect {
-   margin-top: 0%;
+   /* margin-top: 0; */
     font-family: 'Courier New', Courier, monospace;
-    font-weight: 350px;
+    /* font-weight: 350px; */
     text-align: center;
     color: white;
-    height: calc(100vh - 959.7px);
+    height: 0px;
+    /* height: calc(100vh - 959.7px); */
+    /* height: calc(100vh - 122rem); */
 }
 
 .card-container{
@@ -75,6 +78,7 @@
     flex-wrap: wrap;
     gap: 20px;
     text-align: center;
+    
 }
 .card-1:hover, .card-2:hover, .card-3:hover, .card-4:hover {
     transform: scale(1.15);

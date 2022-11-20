@@ -49,14 +49,12 @@ class Main extends Component {
                 {this.props.token.token !== undefined ?
                         <div >
 
-                            <Navbar collapseOnSelect fixed='static-top' expand="lg" bg="" variant="dark" 
-                            // direction='right' size={35} distance={'lg'} color={'#4fd1c5'} label="Show menu" id="wrapper" class="overlay"
-                            className='header-container'>
+                            <Navbar collapseOnSelect  expand="lg" bg="" variant="dark" className='header-container'>
                               <Container>
                               <img src={require('../../images/Whatever-4.png')} alt='main-logo' className='nav-logo'/>
                               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                                 <Navbar.Collapse id="responsive-navbar-nav">
-                             <Nav>
+                             <Nav className='header-nav-links'>
                                 <Nav.Link as={Link} to='/home' className="nav-btn">Home</Nav.Link>
                                 <Nav.Link as={Link} to='/home' onClick={this.handleLogout} className='nav-logout'>Logout</Nav.Link>
                                 <Nav.Link as={Link} to='/invite' className="nav-btn">Start An Invite</Nav.Link>
@@ -85,7 +83,7 @@ class Main extends Component {
                     <Route exact path='/invite-list' component={() => <InviteList />}/>
                     <Route exact path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
                     <Route exact path='/aboutus' component={() => <AboutUs />}/>
-                    <Redirect to='/home'/>
+                    {/* <Redirect to='/home'/> */}
                 </div>    
                 </Switch>
             </div>

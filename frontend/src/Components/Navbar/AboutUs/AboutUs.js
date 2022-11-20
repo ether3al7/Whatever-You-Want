@@ -21,7 +21,6 @@ const AboutUs = () => {
             Team Members: Ryan Efaw, Liz Ontiveros, Ken Galvin, Liz Villalobos 
         
     </div>
-
     <h1 className='connect'>We'd love to connect</h1>
     <br/>
 

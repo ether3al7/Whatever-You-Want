@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { NavLink } from 'react-bootstrap'
+import { Nav, NavLink } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import './Navbar.css'
 import AboutUs from './AboutUs/AboutUs'
@@ -23,11 +23,10 @@ import AboutUs from './AboutUs/AboutUs'
         
         <div className='footer-quick-links'>
         
-          <Link to='/aboutus'><button className='quick-links-btn'>About Us</button></Link>
+          <Nav.Link as={Link} to='/aboutus'><button className='quick-links-btn'>About Us</button></Nav.Link>
         
-          <Link to='#'><button className='quick-links-btn' >Careers</button></Link>
           <div className='copyright'>
-          <i  className='copyright'>&copy;Copyright 2022 All Rights Reserved by Whatever You Want</i>
+          <i className='copyright'>&copy;Copyright 2022 All Rights Reserved by Whatever You Want</i>
       </div>
         </div>
         

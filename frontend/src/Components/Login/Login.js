@@ -8,7 +8,6 @@ import axios from 'axios'
 import '../Starter/Starter.css'
 import './Login.css'
 import { Alert, FormFeedback, Input } from 'reactstrap'
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 
@@ -110,10 +109,10 @@ class Login extends Component {
         return(
             <div className='login'>
                 <h1 className='sign-in'>Please Sign In</h1>
-                <label class="sr-only">Username</label>
+                <label className="sr-only">Username</label>
                 
                 {!this.state.isNotAuthenticated && this.state.message && this.state.message.length > 0 && <Alert color='primary'>{this.state.message}</Alert>}
-                {this.state.isNotAuthenticated && this.state.message && <Alert color='danger'>{this.state.message}</Alert>}
+                {this.state.isNotAuthenticated && this.state.message && this.state.message.length > 0 && <Alert color='danger'>{this.state.message}</Alert>}
                 <Input
                     type="text"
                     id="username"
@@ -128,7 +127,7 @@ class Login extends Component {
                 />
                 <FormFeedback>{errors.username}</FormFeedback>
                 <br/>
-                <label class="sr-only">Password</label>
+                <label className="sr-only">Password</label>
                 <Input
                     type="password"
                     id="password"

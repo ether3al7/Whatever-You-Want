@@ -20,6 +20,7 @@ import Home from '../Home/Home'
 
 
 export default function Header() {
+  const [open, setOpen] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [navbarOpen, setNavbarOpen] = useState(false)
   const [showAnimated, setShowAnimated] = useState(false);
@@ -27,27 +28,30 @@ export default function Header() {
   return (
 <>
 <div className='starter-bg-2'>
-    <Navbar collapseOnSelect  expand="lg" bg="" variant="dark" className='header-container'>
+    <Navbar collapseOnSelect expand="lg" bg="" variant="dark" className='header-container'>
+   
                               <Container fluid >
                               <img src={require('../../images/Whatever-4.png')} alt='main-logo' className='nav-logo'/>
-                              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                              {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                                 <Navbar.Collapse id="responsive-navbar-nav">
                              <Nav className='header-nav-links'>
                                 <Nav.Link as={Link} to='/' className="nav-btn">Home</Nav.Link>
-                                <Nav.Link as={Link} to='/home' className='nav-logout'>Logout</Nav.Link>
+                                <Nav.Link as={Link} to='/login' className='nav-logout'>Login</Nav.Link>
                                 <Nav.Link as={Link} to='/invite' className="nav-btn">Invite</Nav.Link>
                               </Nav>
-                                </Navbar.Collapse>
+                                </Navbar.Collapse> */}
                               </Container>
                             </Navbar> 
-
+                              
     
     <div>
 
       <div>
+      <Nav.Link as={Link} to='/home'>
       <button className='logo-btn3' onClick={() => setIsOpen(true)}>
           <img src={require('../../images/Whatever-4.png')} alt='main-logo'/>
       </button>
+      </Nav.Link>
 
       <LoginModal open={isOpen} onClose={() => setIsOpen(false)} className='login-modal'>
         <Login />
