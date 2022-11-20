@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.InvalidInviteException;
 import com.techelevator.model.Invite;
+import org.springframework.data.relational.core.sql.In;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -75,17 +76,46 @@ public class JdbcInviteDao implements InviteDao{
     }
 
     @Override
-    public void updateInvite(Invite invite, int statusID) {
+    public void updateInvite(Invite invite, int statusID) throws InvalidInviteException {
+        if (invite.getFromAccountId() == invite.getFromAccountId()){
+            throw new InvalidInviteException();
+        }
+
+        if(statusID == 2){
+            invite.setInviteStatusId(2);
+            invite.setInviteTypeId(2);
+
+            String sql = "UPDATE invite SET invite_type_id = ?, invite_status_id = ? " +
+                    "WHERE invite_id = ?";
+
+            jdbcTemplate.update(sql, invite.getInviteTypeId(),invite.getInviteStatusId(), invite.getId());
+
+            updateFromAccount(invite.getId(),invite.getToAccountId());
+            updateToAccount(invite.getId(), invite.getFromAccountId());
+        }
+
+        else if (statusID == 3) {
+            invite.setInviteStatusId(3);
+
+            String sql = " UPDATE invite SET invite_status_id = ? " +
+                    "WHERE invite_id = ?;";
+
+
+            jdbcTemplate.update(sql, invite.getInviteStatusId(), invite.getId());
+        }
     }
 
     @Override
-    public String getInviteStatus(int id) {
-        return null;
+    public String getInviteStatus(int statusID) {
+        String sql = "SELECT invite_status_desc "+
+                "FROM invite_status "+
+                "WHERE invite_status_id = ?;";
+        return jdbcTemplate.queryForObject(sql, String.class, statusID);
     }
 
     @Override
     public String getUserNameFromId(int InviteId, String currentUser) {
-        return null;
+      return null;
     }
 
     private Invite mapRowToInvite(SqlRowSet srs) {
