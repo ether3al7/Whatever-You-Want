@@ -7,7 +7,11 @@ import {baseUrl} from '../../Shared/baseUrl'
 import axios from 'axios'
 import '../Starter/Starter.css'
 import './Login.css'
-import { Input } from 'reactstrap'
+import { Alert, FormFeedback, Input } from 'reactstrap'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 
 
@@ -22,23 +26,70 @@ class Login extends Component {
         super(props);
         this.state = {
             username: '',
-            password: ''
+            password: '',
+            message: '',
+            error: '',
+            isNotAuthenticated: false,
+            
         }
         this.handleInputChange = this.handleInputChange.bind(this);
     }
-    
-
-    handleLogin = async () => {
-        const data = { username: this.state.username, password: this.state.password };
         
 
+    handleLogin = async (event) => {
+        const data = { username: this.state.username, password: this.state.password };
         const userWithToken = await axios.post(baseUrl + '/login', data)
+
+	      .catch(function (error) {
+	        if (error.response) {
+	          console.log(error.response.data);
+	          console.log(error.response.status);
+	          console.log(error.response.headers);
+	          alert("Invalid credentials, please try again");
+	        } else if (error.request) {
+	          console.log(error.request);
+	        } else {
+	        
+	          console.log("Error", error.message);
+	        }
+	        console.log(error.config);
+	      });
 
         
         await this.props.dispatch(addToken(userWithToken.data.token))
         await this.props.dispatch(addUser(userWithToken.data.user));
+        
+        console.log(userWithToken.data.token);
     }
-
+    handleItem =(field) => (e) => {
+        this.state({
+            pressed: {...this.state.pressed, [field]: true }
+        });
+    }
+    symbolCheck(string) {
+        const specialCharacters = /[`!@#$%^&]/;
+        return specialCharacters.test(string);
+    }
+    validate(username, password){
+        const errors = {
+            username: '',
+            password: ''
+            
+        };
+        if(this.state.username && username.split('').filter(x => x  === '@').length !==1)
+        errors.username ="Email should contain @";
+        if(this.state.username === this.state.isNotAuthenticated)
+        errors.username = 'Invalid credentials'
+        if(this.state.password && password.length < 8)
+        errors.password = 'Password must be 8 characters or more';
+        else if(this.state.password && password.search(/[A-Z]/) < 0)
+        errors.password = 'Password must contain atleast one uppercase letter';
+        else if(this.state.password && password.search(/[a-z]/) < 0)
+        errors.password = 'Password must contain atleast one uppercase letter';
+        else if(this.state.password && !this.symbolCheck(password))
+        errors.password = 'Password should contain one of the following characters !@#$%';
+        return errors;
+    }
     handleInputChange = (event) => {
         event.preventDefault()
         this.setState({
@@ -51,42 +102,55 @@ class Login extends Component {
     }
 
     render(){
+        const errors = this.validate(this.state.username, this.state.password);
+        // if(this.state.isAuthenticated){
+
+        
+
         return(
             <div className='login'>
                 <h1 className='sign-in'>Please Sign In</h1>
-                {/* <label class="sr-only">Username</label> */}
+                <label class="sr-only">Username</label>
+                
+                {!this.state.isNotAuthenticated && this.state.message && this.state.message.length > 0 && <Alert color='primary'>{this.state.message}</Alert>}
+                {this.state.isNotAuthenticated && this.state.message && <Alert color='danger'>{this.state.message}</Alert>}
                 <Input
                     type="text"
                     id="username"
                     name="username"
-                    class="form-control"
-                    placeholder="Username"
-                    v-model="user.username"
-                    onChange={this.handleInputChange}
+                    value={this.state.username}
+                    valid={errors.username === ''}
+                    invalid={errors.username !== ''}
+                    placeholder="Email"
+                    onBlur={this.handleItem('username')}
+                    onChange={this.handleInputChange} 
                     required
                 />
+                <FormFeedback>{errors.username}</FormFeedback>
                 <br/>
-                {/* <label class="sr-only">Password</label> */}
+                <label class="sr-only">Password</label>
                 <Input
                     type="password"
                     id="password"
                     name="password"
-                    class="form-control"
+                    value={this.state.password}
+                    valid={errors.password === ''}
+                    invalid={errors.password !== ''}
                     placeholder="Password"
-                    v-model="user.password"
-                    onChange={this.handleInputChange}
+                    onBlur={this.handleItem('password')}
+                    onChange={this.handleInputChange} 
                     required
                 />
+                <FormFeedback>{errors.password}</FormFeedback>
                 <br/>
 
-                {/* <button className='register-btn' > */}
                 <Link to="/register" ><button className='register-btn' >Register</button></Link>
-                {/* </button> */}
-                {/* <Link to="/register" onClick={this.navigateToRegister}>Need an account?</Link> */}
+            
                 <button type="submit" onClick={this.handleLogin} className='login-btn'>Sign in</button>
             </div>
         )
     }
 }
+
 
 export default withRouter(connect(mapDispatchToProps)(Login));

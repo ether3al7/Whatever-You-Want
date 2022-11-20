@@ -17,6 +17,7 @@ export default function ViewRestaurants(props){
      )
 
     return (
+        
         <div className="list">
             {restaurants}
         </div>

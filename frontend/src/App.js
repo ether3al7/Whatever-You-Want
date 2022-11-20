@@ -13,6 +13,7 @@ import Header from './Components/Navbar/Header';
 import Footer from './Components/Navbar/Footer';
 
 
+
 const store = ConfigureStore();
 
 function App() {
@@ -24,13 +25,6 @@ function App() {
         <Main/>
         <Footer />
       </>  
-        {/* <Starter /> */}
-        {/* <Home /> */}
-        {/* <Navbar /> */}
-        {/* <Header /> */}
-        {/* <RegisterModal /> */}
-        {/* <RegisterStarter /> */}
-        {/* <LoginStarter /> */}
       </BrowserRouter>
     </Provider>
   );

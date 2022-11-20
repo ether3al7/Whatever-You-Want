@@ -4,17 +4,14 @@ import { Link, Route, Redirect, BrowserRouter } from 'react-router-dom'
 import { Router, useNavigate } from 'react-router'
 import { baseUrl } from '../../Shared/baseUrl'
 import '../Starter/Starter.css'
-import Starter from '../Starter/LoginStarter'
-import Navbar from '../Navbar/Navbar'
-import Login from '../Login/Login'
-import Main from '../Main/Main'
-import Home from '../Home/Home'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {addToken, deleteUser} from '../../Redux/actionCreators'
-import {connect} from 'react-redux'
-import {withRouter} from 'react-router-dom'
-import LoginModal from '../Login/LoginModal'
-import { Alert, Form, FormGroup } from 'react-bootstrap'
-import { FormFeedback, Input } from 'reactstrap'
+import { Form, FormGroup } from 'react-bootstrap'
+import { Alert, FormFeedback, Input, Label } from 'reactstrap'
+import '../Login/Login.css'
+
+
 
 
 
@@ -39,8 +36,9 @@ class Register extends Component{
             username: '',
             password: '',
             confirmPassword: '',
-            globalMessage: '',
-            userExists: false
+            message: '',
+            userAlreadyExists: false
+            
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -48,7 +46,7 @@ class Register extends Component{
     }
 
     handleInputChange = (event) => {
-        // event.preventDefault()
+        event.preventDefault()
         // this.setState({
         //     [event.target.name]: event.target.value
         // })
@@ -59,18 +57,14 @@ class Register extends Component{
             [name]: value
         });
     }
-
-    handleSubmit = () => {
+    
+    handleSubmit = (event) => {
+        
         const data = {
             username: this.state.username, 
             password: this.state.password, 
             confirmPassword: this.state.confirmPassword, 
             role: 'USER'}
-        // if(this.state.password === this.state.confirmPassword){
-        //     axios.post(baseUrl + "/register", data)
-        // }else{
-        //     alert("Password and Confirm Password must match!!!")
-        // }
 
         //Post request
         fetch('http://localhost:8081/register', {
@@ -83,21 +77,21 @@ class Register extends Component{
         .then((response) => {
             if(response.status === 201){
                 this.setState({
-                    globalMessage: 'Your account was created successfully, please login',
-                    userExists: false
+                    message: 'Your account was created successfully, please login',
+                    userAlreadyExists: false
                 });
-            } else if(response.status === 500) {
+            } else if(response.status === 400) {
                 this.setState({
-                    globalMessage: 'Email alreay exists, please try again',
-                    userExists: true
+                    message: 'Email already exists, please try again',
+                    userAlreadyExists: true
                 });
             }
         }) 
         .catch((error) => {
-            console.error('Error encountered:', error);
+            console.error('Error:', error);
             this.setState({globalError: 'Error found on submission'});
         });
-        Event.preventDefault()
+        event.preventDefault()
     }
     handleItem =(field) => (e) => {
         this.state({
@@ -147,10 +141,11 @@ class Register extends Component{
             
             <Form onSubmit={(event) => this.handleSubmit(event)} className='form'>
                 <h1>Create Account</h1>
-                {!this.state.userExists && this.state.message && this.state.message.length > 0 &&<Alert color='primary'>{this.state.globalMessage}</Alert>}
-                {this.state.userExists && this.state.message && this.state.message.length > 0 &&<Alert color='danger'>{this.state.globalMessage}</Alert>}
-                {/* <label class="sr-only">Username</label> */}
                 
+                <label class="sr-only">Username</label>
+                {!this.state.userAlreadyExists && this.state.message && this.state.message.length > 0 && <Alert color='primary'>{this.state.message}</Alert>}
+                {this.state.userAlreadyExists && this.state.message && this.state.message.length > 0 && <Alert color='danger'>{this.state.message}</Alert>}
+               
                 <Input
                     type="text"
                     id="username"
@@ -172,7 +167,7 @@ class Register extends Component{
                 <FormFeedback>{errors.username}</FormFeedback>
                 
                 <br/>
-                {/* <label class="sr-only">Password</label> */}
+                <label class="sr-only">Password</label>
                 
                 <Input
                     type="password"
@@ -215,8 +210,10 @@ class Register extends Component{
                 <br/>
                 
                 <Link to="/login"><button className='login-btn-2' onClick={() => this.setState({showLogin: this.state.showLogin})}>Login</button></Link>
+
                 {/* <Link to="/login" onClick={this.navigateToLogin}>Have an account?</Link> */}
                 <button type="submit" onClick={this.handleSubmit} className='register-btn-2'>Register</button>
+                
                 </Form>
             </div>
             
