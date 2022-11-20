@@ -9,15 +9,19 @@ export default function Home() {
 
     const [needSearch, setNeedSearch] = React.useState(true)
     const [needView, setNeedView] = React.useState(false)
+    const [location, setLocation] = React.useState({city: "", zipcode: ""})
 
     return(
         <div>
             {needView && <ViewRestaurants 
                 restaurants={data}
+                location={location}
             /> }
             {needSearch && <Search 
                 setNeedSearch={setNeedSearch}
                 setNeedView={setNeedView}
+                location={location}
+                setLocation={setLocation}
             />}
         </div>
     )
