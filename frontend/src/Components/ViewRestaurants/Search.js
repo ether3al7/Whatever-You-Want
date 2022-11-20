@@ -4,8 +4,6 @@ import './Search.css';
 
 export default function Search(props) {
 
-    const [location, setLocation] = React.useState({city: "", zipcode: ""})
-
     function submitLocationToApi(){
         /** Code to fetch from Api */
         props.setNeedSearch(prevNeedSearch => prevNeedSearch = !prevNeedSearch)
@@ -14,13 +12,13 @@ export default function Search(props) {
     
     function handleClick(event){
         event.preventDefault()
-        submitLocationToApi(location)
+        submitLocationToApi(props.location)
         
     }
 
     function handleChange(event){
         const {name, value} = event.target
-        setLocation(prevLocation => {
+        props.setLocation(prevLocation => {
             return {
                 ...prevLocation,
                 [name]: value
@@ -42,14 +40,14 @@ export default function Search(props) {
                         placeholder="Zipcode" 
                         onChange={handleChange} 
                         name="zipcode"
-                        value={location.zipcode}
+                        value={props.location.zipcode}
                     />
                     <input className='city'
                         type="text" 
                         placeholder="City" 
                         onChange={handleChange} 
                         name="city"
-                        value={location.city}
+                        value={props.location.city}
                     />
                 </section>
                 <section className='submit'>
