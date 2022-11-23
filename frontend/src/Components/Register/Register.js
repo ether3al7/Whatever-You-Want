@@ -43,6 +43,7 @@ class Register extends Component{
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
         this.handleItem = this.handleItem.bind(this);
+        // this.navigateToLogin = this.navigateToLogin(this);
     }
 
     handleInputChange = (event) => {
@@ -123,15 +124,20 @@ class Register extends Component{
         return errors;
     }
     
-    navigateHome = (event) => {
-        const navigate = useNavigate();
-        navigate('/home')
-    };
+    // navigateHome = (event) => {
+    //     const navigate = useNavigate();
+    //     navigate('/home')
+    // };
 
-    navigateToLogin = (event) => {
-        const navigate = useNavigate();
-        navigate('/login')
-    };
+    // navigateToLogin = (event) => {
+    //     const navigate = useNavigate();
+    //     navigate('/login')
+    // };
+
+    // callTwoFuctions  = (event) => {
+    //     this.handleSubmit();
+    //     this.navigateToLogin();
+    // }
 
     render(){
     const errors = this.validate(this.state.username, this.state.password, this.state.confirmPassword);
@@ -150,10 +156,6 @@ class Register extends Component{
                     type="text"
                     id="username"
                     name="username"
-                    // class="form-control"
-                    // placeholder="Email"
-                    // v-model="user.username"
-                    // onChange={this.handleInputChange}
                     value={this.state.username}
                     valid={errors.username === ''}
                     invalid={errors.username !== ''}
@@ -173,10 +175,6 @@ class Register extends Component{
                     type="password"
                     id="password"
                     name="password"
-                    // class="form-control"
-                    // placeholder="Password"
-                    // v-model="user.password"
-                    // onChange={this.handleInputChange}
                     value={this.state.password}
                     valid={errors.password === ''}
                     invalid={errors.password !== ''}
@@ -193,9 +191,6 @@ class Register extends Component{
                     type="password"
                     id="password-confirm"
                     name="confirmPassword"
-                    // class="form-control"
-                    // placeholder="Confirm Password"
-                    // v-model="user.password"
                     value={this.state.confirmPassword}
                     valid={errors.confirmPassword === ''}
                     invalid={errors.confirmPassword !== ''}
@@ -211,7 +206,6 @@ class Register extends Component{
                 
                 <Link to="/login"><button className='login-btn-2' onClick={() => this.setState({showLogin: this.state.showLogin})}>Login</button></Link>
 
-                {/* <Link to="/login" onClick={this.navigateToLogin}>Have an account?</Link> */}
                 <button type="submit" onClick={this.handleSubmit} className='register-btn-2'>Register</button>
                 
                 </Form>

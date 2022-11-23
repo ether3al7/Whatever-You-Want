@@ -95,10 +95,10 @@ class Login extends Component {
             [event.target.name]: event.target.value
         })
     }
-    navigateToRegister = (event) => {
-        const navigate = useNavigate();
-        navigate('/register')
-    }
+    // navigateToRegister = (event) => {
+    //     const navigate = useNavigate();
+    //     navigate('/register')
+    // }
 
     render(){
         const errors = this.validate(this.state.username, this.state.password);

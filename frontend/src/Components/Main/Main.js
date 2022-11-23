@@ -13,6 +13,7 @@ import '../Register/Register.css'
 import Invite from '../Invite/Invite'
 import InviteList from '../Invite/InviteList'
 import { Container, Nav, Navbar } from "react-bootstrap";
+import { SearchBar } from '../ViewRestaurants/SearchBar'
 
 
 
@@ -51,7 +52,7 @@ class Main extends Component {
 
                             <Navbar collapseOnSelect  expand="lg" bg="" variant="dark" className='header-container'>
                               <Container>
-                              <img src={require('../../images/Whatever-4.png')} alt='main-logo' className='nav-logo'/>
+                              <Link to='/home'><img src={require('../../images/Whatever-4.png')} alt='main-logo' className='nav-logo'/></Link>
                               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                                 <Navbar.Collapse id="responsive-navbar-nav">
                              <Nav className='header-nav-links'>
@@ -81,6 +82,7 @@ class Main extends Component {
                     <Route exact path='/view' component={() => <ViewRestaurants />}/>
                     <Route exact path='/invite' component={() => <Invite />}/>
                     <Route exact path='/invite-list' component={() => <InviteList />}/>
+                    <Route exact path='/search' component={() => <SearchBar />}/>
                     <Route exact path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
                     <Route exact path='/aboutus' component={() => <AboutUs />}/>
                     {/* <Redirect to='/home'/> */}

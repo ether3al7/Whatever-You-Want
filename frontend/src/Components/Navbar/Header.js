@@ -15,6 +15,7 @@ import Invite from '../Invite/Invite';
 import InviteList from '../Invite/InviteList';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import Home from '../Home/Home'
+import { SearchBar } from '../ViewRestaurants/SearchBar';
 
 
 
@@ -29,7 +30,6 @@ export default function Header() {
 <>
 <div className='starter-bg-2'>
     <Navbar collapseOnSelect expand="lg" bg="" variant="dark" className='header-container'>
-   
                               <Container fluid >
                               <img src={require('../../images/Whatever-4.png')} alt='main-logo' className='nav-logo'/>
                               {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
