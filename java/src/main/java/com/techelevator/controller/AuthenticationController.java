@@ -63,6 +63,18 @@ public class AuthenticationController {
         }
     }
 
+    @GetMapping(value = "/user_id/{userId}")
+    public User getUserByUserId(@PathVariable Long userId) throws Exception {
+        return userDao.getUserById(userId);
+    }
+
+
+    @GetMapping(value = "/username/{username}")
+    public User findIdByUsername(@PathVariable String username) throws Exception {
+        return userDao.findByUsername(username);
+    }
+
+
     /**
      * Object to return as body in JWT Authentication.
      */

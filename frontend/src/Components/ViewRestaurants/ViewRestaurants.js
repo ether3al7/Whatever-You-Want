@@ -4,22 +4,24 @@ import './ViewRestaurants.css';
 
 export default function ViewRestaurants(props){
 
-    const restaurants = props.restaurants.map(
-    
-        restaurant =>{
-           return (
-                <Restaurant 
-                    key={restaurant.id}
-                    {...restaurant}
-                />
-           )
-        }
-     )
 
-    return (
+
+    // const restaurants = props.restaurants.map(
+    
+    //     restaurant =>{
+    //        return (
+    //             <Restaurant 
+    //                 key={restaurant.id}
+    //                 {...restaurant}
+    //             />
+    //        )
+    //     }
+    //  )
+
+    // return (
         
-        <div className="list">
-            {restaurants}
-        </div>
-    )
+    //     <div className="list">
+    //         {restaurants}
+    //     </div>
+    // )
 }

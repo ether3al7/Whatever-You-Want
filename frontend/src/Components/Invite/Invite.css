@@ -265,3 +265,6 @@
           background-color: black;
           box-shadow: 3px 3px 1px 1px rgba(16, 16, 19, 0.2);
         }   
+ .invite-search {
+  position: absolute;
+ }       

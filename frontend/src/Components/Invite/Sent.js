@@ -5,9 +5,8 @@ import { useEffect } from "react"
 import {Link} from "react-router-dom"
 import { BEARER_TOKEN } from '../../services/config'
 
-//List of recevied invitations
-
-	export default function InviteList() {
+//List of Sent invitations
+	export default function Sent() {
 	
 
 	    const [inviteList, setInviteList] = React.useState([])
@@ -18,7 +17,7 @@ import { BEARER_TOKEN } from '../../services/config'
 	
 
 	    useEffect(() => {
-	        axios.get('http://localhost:8081/invitations/invitee/' + userId, {
+	        axios.get('http://localhost:8081/invites/sender/' + userId, {
 	            headers: {
 	                'Content-Type': 'application/json',
 					'Autorization': 'Bearer' + token
@@ -38,18 +37,18 @@ import { BEARER_TOKEN } from '../../services/config'
 
 	    return ( 
 	        <div>
-	            <h3>Invites</h3>
+	            {/* <h3>Invites</h3> */}
 	              {inviteList.map((invite) => {
 	                    return (
 	                    <div id={invite.userId} key={invite.inviteId}>
 	                        <Link  to={{
-	                            pathname: '/invitations/' + invite.inviteId,  //invitations data from inviteData.js
+	                            pathname: '/invitations/' + invite.inviteId,  
 	                            state: {
 	                                inviteId: invite.inviteId,
 	                                token: token
 	                            },
 	                        }}>
-	                        <p>Invite from user #{invite.inviteId}</p>
+	                        <p>Invite for #{invite.event} to user #{invite.inviteId}</p>
 	                        </Link>
 	                    </div>
 	                    )
@@ -59,7 +58,7 @@ import { BEARER_TOKEN } from '../../services/config'
 	        </div>
 	     )
 	}
-
+	
 	
 
 

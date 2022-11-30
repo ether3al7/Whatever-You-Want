@@ -1,26 +1,39 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { BEARER_TOKEN } from '../../services/config'
 import Finalist from '../Finalists/Finalist'
-import { useLocation } from 'react-router'
+import { useInRouterContext, useLocation, useNavigate } from 'react-router'
 import RestaurantList from './RestaurantList'
+import { useParams } from 'react-router'
+import { useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 
 
 
-export default function InviteData() {
+function InviteData(props) {
     
 const [inviteData, setInviteData] = useState({})
 const [restaurantList, setRestaurantList] = useState({restaurants: []})
-const location = useLocation();
-const inviteId = location.state.inviteId
-const token = location.state.token
+// const location = useSelector();
+
+// const inviteId = location.state.inviteId
+// const token = location.state.token
+const inviteId = useSelector((state) => state.token.inviteId)
+const token = useSelector((state) => state.token.token)
+
 
 
 useEffect(() => {
 axios.get('http://localhost:8081/invites/' + inviteId, {
     headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
+        'Autorization': 'Bearer' + token
+        // 'Authorization': `Bearer ${BEARER_TOKEN}`,
+        //  mode: 'cors',
+        //  credentials: 'include',
+        // 'Access-Control-Allow-Origin' : '*',
+        // 'Access-Control-Allow-Methods': '*', 
+        // 'Access-Control-Allow-Headers': '*',
     }
 })
 .then(response => {
@@ -32,8 +45,13 @@ axios.get('http://localhost:8081/invites/' + inviteId, {
 const list = () => {
     axios.get(`http://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${inviteData.food}&location=${inviteData.location}`, { 
         headers: {
-            'Authorization': 'Bearer' + BEARER_TOKEN,
-            'Access-Control-Allow-Origin': '*',
+            'Autorization': 'Bearer' + token,
+            // 'Authorization': `Bearer ${BEARER_TOKEN}`,
+            //  mode: 'cors',
+            //  credentials: 'include',
+            'Access-Control-Allow-Origin' : '*',
+            // 'Access-Control-Allow-Methods': '*',
+            // 'Access-Control-Allow-Headers': '*',
             }
             })
             .then(response => {
@@ -79,32 +97,32 @@ const list = () => {
             <Finalist token={token} inviteId={inviteId} food={inviteData.food} location={inviteData.location}/>
            </div>
         </div>
-    //     <div className="sent1">
-    //         {/* <h1>Sent</h1> */}
-    //           {invitationList.map((invite) => {
-    //                 return (
-    //                 <div id={invite.userId} key={invite.inviteId}>
-    //                     <Link  to={{
-    //                         pathname: '/invites/' + invite.inviteId,
-    //                         state: {
-    //                             inviteId: invite.inviteId,
-    //                             token: token
-    //                         },
-    //                     }}>
-    //                     <p>Invite for {invite.event} to user #{invite.inviteId}</p>
-    //                     </Link>
+        // <div className="sent1">
+        //     {/* <h1>Sent</h1> */}
+        //       {list.map((invite) => {
+        //             return (
+        //             <div id={invite.userId} key={invite.inviteId}>
+        //                 <Link  to={{
+        //                     pathname: '/invites/' + invite.inviteId,
+        //                     state: {
+        //                         inviteId: invite.inviteId,
+        //                         token: token
+        //                     },
+        //                 }}>
+        //                 <p>Invite for {invite.event} to user #{invite.inviteId}</p>
+        //                 </Link>
                      
 
 
-    //                 </div>
-    //                 )
-    //         })} 
+        //             </div>
+        //             )
+        //     })} 
 
 
-    //     </div>
+        // </div>
 
 
      
      )
 }
-
+export default InviteData;

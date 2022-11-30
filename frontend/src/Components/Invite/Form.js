@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 	import '../Invite/Invite.css';
+	import '../Invite/Form.css'
 	import axios from 'axios';
 	import { Link } from 'react-router-dom';
 import { BEARER_TOKEN } from '../../services/config';
@@ -23,44 +24,44 @@ import { BEARER_TOKEN } from '../../services/config';
 	        };
 	
 
-	        this.handleTermChange = this.handleTermChange.bind(this);
-	        this.handleLocationChange = this.handleLocationChange.bind(this);
-	        this.handleReceiverChange = this.handleReceiverChange.bind(this);
-	        this.handleInviteIdChange = this.handleInviteIdChange.bind(this);
+	        this.handleTerm = this.handleTerm.bind(this);
+	        this.handleLocation = this.handleLocation.bind(this);
+	        this.handleReceiver = this.handleReceiver.bind(this);
+	        this.handleInviteId = this.handleInviteId.bind(this);
 	        this.onSave = this.onSave.bind(this);
 	      }
 	
 
-	  handleTermChange(event) {
+	  handleTerm(event) {
 	    this.setState({term: event.target.value});
 	    // console.log(this.state)
 	  }
 	
 
-	  handleLocationChange(event) {
+	  handleLocation(event) {
 	    this.setState({location: event.target.value});
 	    // console.log(this.state)
 	  }
 	
 
-	  handleReceiverChange(event) {
+	  handleReceiver(event) {
 	    this.setState({receiver: event.target.value});
 	    // console.log(this.state)
 	  }
 	
 
-	  handleInviteIdChange(event) {
+	  handleInviteId(event) {
 	    this.setState({inviteId: event.target.value});
 	    console.log(this.state)
 	  }
 
 	   onSave = e => {
 	    e.preventDefault();
-	    // const token = this.props.token
+	    const token = this.props.token
 	    let data= "";
 	    const inviteInfo = {
 	        senderId: this.props.username,
-	        appointment: this.props.date + " " + this.props.time,
+	        event: this.props.date + " " + this.props.time,
 	        location: this.state.location + "",
 	        food: this.state.term + ""
 	    }
@@ -69,7 +70,11 @@ import { BEARER_TOKEN } from '../../services/config';
 	    axios.post(`http://localhost:8081/invites/`, inviteInfo, {
 	        headers: {
 	            'Content-Type': 'application/json',
-	             'Authorization': 'Bearer ' + BEARER_TOKEN
+				'Autorization': 'Bearer' + token
+	            //  'Authorization': `Bearer ${BEARER_TOKEN}`,
+				//  'Access-Control-Allow-Origin' : '*',
+                //  'Access-Control-Allow-Methods': '*',
+                //  'Access-Control-Allow-Headers': '*',
 	        }})
 	        .then(function (response) {
 	            console.log(response)
@@ -87,7 +92,11 @@ import { BEARER_TOKEN } from '../../services/config';
 	        axios.post(`http://localhost:8081/invitations/`, listInfo, {
 	            headers: {
 	                'Content-Type': 'application/json',
-	                 'Authorization': 'Bearer ' + BEARER_TOKEN
+					'Autorization': 'Bearer' + token
+	                //  'Authorization': `Bearer ${BEARER_TOKEN}`,
+					//  'Access-Control-Allow-Origin' : '*',
+                    //  'Access-Control-Allow-Methods': '*',
+                    //  'Access-Control-Allow-Headers': '*',
 	            }})
 	            .then(() => {
 	                console.log('entry created');
@@ -103,16 +112,16 @@ import { BEARER_TOKEN } from '../../services/config';
 	
 	    render() {
 	        return (
-	        <div>
-	        <div className='enter-location'>
-	                    <h3 className='search'>Seacrh to create invite results</h3>
-	                    <br/>
-	        <input placeholder="food type" onChange={this.handleTermChange} className='searchbar-b'/>
-	        <input placeholder="location" onChange={this.handleLocationChange} className='searchbar-b'/>
-	        <input placeholder="receiver" onChange={this.handleReceiverChange} className='searchbar-b'/>
-
-	        </div>
+	        
+	        <div className='invite-search'>
+			<>
+	        
+				Search to create invite results
+	        <input placeholder="food type" onChange={this.handleTerm} className='searchbar-invite'/>
+	        <input placeholder="location" onChange={this.handleLocation} className='searchbar-invite'/>
+	        <input placeholder="receiver" onChange={this.handleReceiver} className='searchbar-invite'/>
 	            <button onClick={this.onSave}className='save'>Save</button>
+				</>
 	            <div>
 	            <Link to='/home'>
 	            <button className='return-home'>back to home</button>
