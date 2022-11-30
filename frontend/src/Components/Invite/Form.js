@@ -67,10 +67,11 @@ import { BEARER_TOKEN } from '../../services/config';
 	    }
 	    console.log(inviteInfo)
 	    
-	    axios.post(`http://localhost:8081/invites/`, inviteInfo, {
+	    axios.post(`/invites/`, inviteInfo, {
 	        headers: {
 	            'Content-Type': 'application/json',
-				'Autorization': 'Bearer' + token
+				'Autorization': 'Bearer' + token,
+				'Access-Control-Allow-Credentials' : true,
 	            //  'Authorization': `Bearer ${BEARER_TOKEN}`,
 				//  'Access-Control-Allow-Origin' : '*',
                 //  'Access-Control-Allow-Methods': '*',
@@ -89,10 +90,11 @@ import { BEARER_TOKEN } from '../../services/config';
 	            receiverId: this.state.receiver + "" 
 	        }
 	        console.log(listInfo)
-	        axios.post(`http://localhost:8081/invitations/`, listInfo, {
+	        axios.post(`/invitations/`, listInfo, {
 	            headers: {
 	                'Content-Type': 'application/json',
-					'Autorization': 'Bearer' + token
+					'Autorization': 'Bearer' + token,
+					'Access-Control-Allow-Credentials' : 'true',
 	                //  'Authorization': `Bearer ${BEARER_TOKEN}`,
 					//  'Access-Control-Allow-Origin' : '*',
                     //  'Access-Control-Allow-Methods': '*',

@@ -15,6 +15,7 @@ function InviteData(props) {
 const [inviteData, setInviteData] = useState({})
 const [restaurantList, setRestaurantList] = useState({restaurants: []})
 // const location = useSelector();
+// const location = useLocation();
 
 // const inviteId = location.state.inviteId
 // const token = location.state.token
@@ -23,11 +24,13 @@ const token = useSelector((state) => state.token.token)
 
 
 
-useEffect(() => {
-axios.get('http://localhost:8081/invites/' + inviteId, {
+// useEffect(() => {
+    const list = () => {
+axios.get('/invites/' + inviteId, {
     headers: {
         'Content-Type': 'application/json',
-        'Autorization': 'Bearer' + token
+        'Autorization': 'Bearer ' + token,
+        'Access-Control-Allow-Credentials' : 'true',
         // 'Authorization': `Bearer ${BEARER_TOKEN}`,
         //  mode: 'cors',
         //  credentials: 'include',
@@ -39,26 +42,27 @@ axios.get('http://localhost:8081/invites/' + inviteId, {
 .then(response => {
     setInviteData(response.data)
     })
-}, [])
+}
+// }, []
 
 
-const list = () => {
-    axios.get(`http://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${inviteData.food}&location=${inviteData.location}`, { 
-        headers: {
-            'Autorization': 'Bearer' + token,
-            // 'Authorization': `Bearer ${BEARER_TOKEN}`,
-            //  mode: 'cors',
-            //  credentials: 'include',
-            'Access-Control-Allow-Origin' : '*',
-            // 'Access-Control-Allow-Methods': '*',
-            // 'Access-Control-Allow-Headers': '*',
-            }
-            })
-            .then(response => {
-                console.log(response.data)
-                setRestaurantList(response.data)
-            })
-        }
+// const list = () => {
+//     axios.get(`http://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${inviteData.food}&location=${inviteData.location}`, { 
+//         headers: {
+//             'Autorization': 'Bearer ' + token,
+//             // 'Authorization': `Bearer ${BEARER_TOKEN}`,
+//             //  mode: 'cors',
+//             //  credentials: 'include',
+//             'Access-Control-Allow-Origin' : '*',
+//             // 'Access-Control-Allow-Methods': '*',
+//             // 'Access-Control-Allow-Headers': '*',
+//             }
+//             })
+//             .then(response => {
+//                 console.log(response.data)
+//                 setRestaurantList(response.data)
+//             })
+//         }
 
 
     // const [invitationList, setInvitationList] = React.useState([])

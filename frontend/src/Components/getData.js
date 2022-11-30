@@ -21,7 +21,7 @@ const getData = {
                     headers: {
                         Authorization: `Bearer ${BEARER_TOKEN}`,
                         // // Origin: 'localhost',
-                        // // withCredentials: true,
+                        withCredentials: true,
                         // 'Access-Control-Allow-Origin' : '*',
                         // 'Access-Control-Allow-Methods': '*',
                         // 'Access-Control-Allow-Headers': '*',

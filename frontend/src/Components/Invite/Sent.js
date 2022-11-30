@@ -20,7 +20,7 @@ import { BEARER_TOKEN } from '../../services/config'
 	        axios.get('http://localhost:8081/invites/sender/' + userId, {
 	            headers: {
 	                'Content-Type': 'application/json',
-					'Autorization': 'Bearer' + token
+					'Autorization': 'Bearer ' + token
 	                // 'Authorization': `Bearer ${BEARER_TOKEN}`,
 					//  mode: 'cors',
                     //  credentials: 'include',

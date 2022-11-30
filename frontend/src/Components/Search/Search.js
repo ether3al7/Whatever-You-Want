@@ -1,5 +1,5 @@
 import React from 'react'
-import SearchBar from '../ViewRestaurants/SearchBar';
+// import SearchBar from '../ViewRestaurants/SearchBar';
 import useBusinessSearch from '../../services/useBusinessSearch'
 import { useInRouterContext, useLocation, useMatch } from 'react-router';
 import { useHistory } from 'react-router';
@@ -25,7 +25,7 @@ export function Search() {
   }
   return (
     <div>
-      <SearchBar />
+      {/* <SearchBar /> */}
     </div>
   )
 }

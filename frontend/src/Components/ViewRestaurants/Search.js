@@ -2,17 +2,27 @@ import { checkPropTypes } from 'prop-types'
 import React from 'react'
 import './Search.css';
 import { useSelector } from 'react-redux';
+import { appendTooltip } from 'rsuite/esm/utils';
 
 export default function Search(props) {
 
     const token = useSelector((state) => state.token.token)
+    // const express = require("express")
+    // const app = express()
+    // const cors = require()
+    // app.use(cors({
+    //     'origin':'http://locaolhost:3000',
+    // }))
+    // app.listen(3000)
 
     function submitLocationToApi(){
         /** Code to fetch from Api */
-        fetch("http://localhost:8081/restaurant/all" ,{
+        // fetch(`http://localhost:8081/restaurants/` ,{
+            fetch(`/restaurants/` ,{
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token, 'Access-Control-Allow-Origin' : '*',
+                'Authorization': 'Bearer ' + token, 
+                
             }
         })
         .then(res => res.json())

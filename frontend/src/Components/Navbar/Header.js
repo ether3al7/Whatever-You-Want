@@ -15,7 +15,7 @@ import Invite from '../Invite/Invite';
 import InviteList from '../Invite/InviteList';
 import "bootstrap/dist/css/bootstrap.min.css"; 
 import Home from '../Home/Home'
-import { SearchBar } from '../ViewRestaurants/SearchBar';
+// import { SearchBar } from '../ViewRestaurants/SearchBar';
 
 
 

@@ -15,13 +15,15 @@ import { BEARER_TOKEN } from '../../services/config'
 
 	    const userId = useSelector((state) => state.user.id)
 	    const token = useSelector((state) => state.token.token)
+		console.log(token)
 	
 
 	    useEffect(() => {
-	        axios.get('http://localhost:8081/invitations/invitee/' + userId, {
+	        axios.get('/invitations/invitee/' + userId, {
 	            headers: {
 	                'Content-Type': 'application/json',
-					'Autorization': 'Bearer' + token
+					'Autorization': 'Bearer ' + token,
+					'Access-Control-Allow-Credentials' : true,
 	                // 'Authorization': `Bearer ${BEARER_TOKEN}`,
 					//  mode: 'cors',
                     //  credentials: 'include',
