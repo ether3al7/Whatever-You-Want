@@ -1,15 +1,27 @@
 import { checkPropTypes } from 'prop-types'
 import React from 'react'
 import './Search.css';
+import { useSelector } from 'react-redux';
 
 export default function Search(props) {
 
+    const token = useSelector((state) => state.token.token)
+
     function submitLocationToApi(){
         /** Code to fetch from Api */
+        fetch("http://localhost:8081/restaurant/all" ,{
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token, 'Access-Control-Allow-Origin' : '*',
+            }
+        })
+        .then(res => res.json())
+        .then(data => props.setList(data))
+
         props.setNeedSearch(prevNeedSearch => prevNeedSearch = !prevNeedSearch)
         props.setNeedView(prevNeedView => prevNeedView = !prevNeedView)
     }
-    
+        
     function handleClick(event){
         event.preventDefault()
         submitLocationToApi(props.location)
