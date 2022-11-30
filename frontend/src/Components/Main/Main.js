@@ -13,7 +13,10 @@ import '../Register/Register.css'
 import Invite from '../Invite/Invite'
 import InviteList from '../Invite/InviteList'
 import { Container, Nav, Navbar } from "react-bootstrap";
-import { SearchBar } from '../ViewRestaurants/SearchBar'
+import InviteData from '../Invite/InviteData'
+import ListFinalist from '../Finalists/ListFinalist'
+import { Router } from 'react-router'
+import Form from '../Invite/Form'
 
 
 
@@ -46,7 +49,9 @@ class Main extends Component {
     
         return(
             
+            
             <div>
+            
                 {this.props.token.token !== undefined ?
                         <div >
 
@@ -66,29 +71,37 @@ class Main extends Component {
                             </Navbar>
 
                         </div>  
+                        
                     : 
+                   
                      <Header />
+                   
                      
                       
                         
                 }
                 
 
-                <Switch>
+                <Switch> 
                 <div>
+                
                     <Route exact path='/login' component={() => <LoginStarter />}/>
                     <Route exact path='/register' component={() => <RegisterStarter />}/>
                     {/* <Route path='/home'component={() => <Home/>}/> */}
                     <Route exact path='/view' component={() => <ViewRestaurants />}/>
                     <Route exact path='/invite' component={() => <Invite />}/>
-                    <Route exact path='/invite-list' component={() => <InviteList />}/>
-                    <Route exact path='/search' component={() => <SearchBar />}/>
+                    <Route exact path='/invitations' component={() => <InviteData />}/>
+                    <Route exact path='/Fianlists' component={() => <ListFinalist />}/>
+                    {/* <Route exact path='/search' component={() => <SearchBar />}/> */}
+                    <Route exact path='/form' component={() => <Form />}/>
                     <Route exact path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
                     <Route exact path='/aboutus' component={() => <AboutUs />}/>
                     {/* <Redirect to='/home'/> */}
+                    
                 </div>    
                 </Switch>
             </div>
+            
         )
     }
 } 

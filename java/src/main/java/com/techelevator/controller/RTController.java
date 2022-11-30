@@ -67,17 +67,17 @@ public class RTController {
         return invites;
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/send", method = RequestMethod.POST)
-    public void sendInvite(@Valid @RequestBody Invite invite){
-        invite.setInviteStatusId(1);
-        inviteDao.createInvite(invite);
-    }
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @RequestMapping(path = "/send", method = RequestMethod.POST)
+//    public void sendInvite(@Valid @RequestBody Invite invite){
+//        invite.setInviteStatusId(1);
+//        inviteDao.createInvite(invite);
+//    }
 
-    @RequestMapping(path = "/update/{id}", method = RequestMethod.PUT)
-    public void updateInvite(@Valid @RequestBody Invite invite, @PathVariable("id") int statusID){
-        inviteDao.updateInvite(invite,statusID);
-    }
+//    @RequestMapping(path = "/update/{id}", method = RequestMethod.PUT)
+//    public void updateInvite(@Valid @RequestBody Invite invite, @PathVariable("id") int statusID){
+//        inviteDao.updateInvite(invite,statusID);
+//    }
 
 
 }

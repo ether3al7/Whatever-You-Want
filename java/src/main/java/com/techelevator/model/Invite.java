@@ -9,6 +9,51 @@ public class Invite {
     private int inviteStatusId;
     private int inviteTypeId;
 
+    private int inviteId;
+    private int senderId;
+    private String event;
+    private String location;
+    private String food;
+
+    public int getInviteId() {
+        return inviteId;
+    }
+
+    public void setInviteId(int inviteId) {
+        this.inviteId = inviteId;
+    }
+
+    public int getSenderId() {
+        return senderId;
+    }
+
+    public void setSenderId(int senderId) {
+        this.senderId = senderId;
+    }
+
+    public String getEvent() {
+        return event;
+    }
+
+    public void setEvent(String event) {
+        this.event = event;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getFood() {
+        return food;
+    }
+
+    public void setFood(String food) {
+        this.food = food;
+    }
 
     public Invite(){};
 
@@ -50,5 +95,21 @@ public class Invite {
 
     public int getInviteStatusId() {
         return inviteStatusId;
+    }
+
+    @Override
+    public String toString() {
+        return "Invite{" +
+                "id=" + id +
+                ", toAccountId=" + toAccountId +
+                ", fromAccountId=" + fromAccountId +
+                ", inviteStatusId=" + inviteStatusId +
+                ", inviteTypeId=" + inviteTypeId +
+                ", invite_id=" + inviteId +
+                ", sender_id=" + senderId +
+                ", event='" + event + '\'' +
+                ", location='" + location + '\'' +
+                ", food='" + food + '\'' +
+                '}';
     }
 }
