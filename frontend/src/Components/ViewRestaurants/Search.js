@@ -17,14 +17,7 @@ export default function Search(props) {
 
     function submitLocationToApi(){
         /** Code to fetch from Api */
-        // fetch(`http://localhost:8081/restaurants/` ,{
-            fetch(`/restaurants/` ,{
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + token, 
-                
-            }
-        })
+        fetch(`http://localhost:8081/restaurants/all`)
         .then(res => res.json())
         .then(data => props.setList(data))
 
@@ -79,3 +72,14 @@ export default function Search(props) {
         </div>
     )
 }
+
+
+ // {
+            
+            // headers: {
+            //     'Content-Type': 'application/json',
+            //     'Authorization': 'Bearer ' + token, 
+            //     'Access-Control-Allow-Credentials' : 'true',
+                
+            // }
+        // }

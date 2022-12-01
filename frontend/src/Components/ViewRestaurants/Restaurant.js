@@ -43,7 +43,7 @@ export default function Restaurants(props) {
     const callNumber = "tel:" + props.phone
 
 
-    if (hours >= props.openingTime && hours < props.closingTime){
+    if (hours >= props.opening_time && hours < props.closing_time){
         isOpen = true;
     } else {
         isOpen = false;
@@ -52,22 +52,24 @@ export default function Restaurants(props) {
     let closingTwelveHour
 
     if (props.closingTime > 12){
-        closingTwelveHour = props.closingTime - 12;
+        closingTwelveHour = props.closing_time - 12;
     } else {
-        closingTwelveHour = props.closingTime;
+        closingTwelveHour = props.closing_time;
     }
     console.log("Time " + time + "Other " + hours + minutes + "sec" + seconds)
     
     return(
         <div className="restaurant">
             <section className="img-section">
-                {props.imageUrl && <img className="img" alt={props.name} src={props.imageUrl}/>}
+                {props.image && <img className="img" alt={props.name} src={props.image}/>}
             </section>
             <section className="info">
                 <h2>{props.name}</h2>
-                <h3>Type: {props.type}</h3>
+                <h3>Type: {props.food}</h3>
                 <h3>Location: {props.address}</h3>
-                <h3>Hours: {props.openingTime}:00am - {closingTwelveHour}:00pm</h3>
+                <h3>Zipcode: {props.city}</h3>
+                <h3>Zipcode: {props.zipcode}</h3>
+                <h3>Hours: {props.opening_time}:00am - {closingTwelveHour}:00pm</h3>
                 <h3 className="sign">{isOpen ? 'Open Now' : 'Closed'}</h3>  
             </section>
             <section className="call-btn">

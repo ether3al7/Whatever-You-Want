@@ -4,25 +4,26 @@ import Search from "./Search";
 import './ViewRestaurants.css';
 
 export default function ViewRestaurants(props){
-
-
-
-    // const restaurants = props.restaurants.map(
+    // const restaurantList = props.restaurants;
     
-        const restaurant = () =>{
-        //    return (
+
+
+    const restaurants = props.restaurants.map(
+        // const restaurants = restaurantList.map(
+    
+        restaurant =>{
+           return (
                 <Restaurant 
-                    key={restaurant.id}
+                    key={restaurant.location_id}
                     {...restaurant}
                 />
-        //    )
+           )
         }
-    //  )
+     )
 
     return (
-        
-        <div className="list">
-            {restaurant}
+        <div>
+            {restaurants}
         </div>
     )
 }

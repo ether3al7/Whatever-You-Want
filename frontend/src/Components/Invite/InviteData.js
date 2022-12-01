@@ -26,7 +26,7 @@ const token = useSelector((state) => state.token.token)
 
 // useEffect(() => {
     const list = () => {
-axios.get('/invites/' + inviteId, {
+axios.get('http://localhost:8081/invites/' + inviteId, {
     headers: {
         'Content-Type': 'application/json',
         'Autorization': 'Bearer ' + token,

@@ -18,6 +18,7 @@ export default function Home() {
     const [needView, setNeedView] = React.useState(false)
     const [location, setLocation] = React.useState({city: "", zipcode: ""})
     const [list, setList] = React.useState({})
+    console.log(list);
 
     return(
       
