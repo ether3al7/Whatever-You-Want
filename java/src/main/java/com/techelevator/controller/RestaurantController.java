@@ -1,13 +1,13 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.RestaurantsDao;
-import com.techelevator.model.Invite;
 import com.techelevator.model.Restaurants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+
 
 @CrossOrigin
 @RestController

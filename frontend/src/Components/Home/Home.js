@@ -1,5 +1,4 @@
 import {Link, useRouteMatch,  } from 'react-router-dom'
-// import SearchBar from '../ViewRestaurants/SearchBar'
 import ViewRestaurants from '../ViewRestaurants/ViewRestaurants'
 import data from "../ViewRestaurants/data"
 import React, { useCallback, useState } from 'react'
@@ -8,6 +7,7 @@ import { SearchResult } from '../Search/SearchResult/SearchResult'
 import Restaurants from '../ViewRestaurants/Restaurant'
 import Search from '../ViewRestaurants/Search'
 import { useContext } from 'react'
+
 
 
 
@@ -25,7 +25,7 @@ export default function Home() {
         <div>
 
             {needView && <ViewRestaurants 
-                restaurants={list}
+                restaurants={data}
                 location={location}
             /> }
             {needSearch && <Search 

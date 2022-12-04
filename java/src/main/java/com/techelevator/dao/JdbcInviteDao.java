@@ -1,6 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.Invite;
+import com.techelevator.model.Invites;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -22,22 +22,22 @@ public class JdbcInviteDao implements InviteDao{
     }
 
 
-    public Invite getInvite(int inviteId){
-        Invite invite = null;
+    public Invites getInvite(int inviteId){
+        Invites invites = null;
 
         String sql = "SELECT * " +
                 "FROM invites " +
                 "WHERE invite_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, inviteId);
         if(results.next()){
-            invite = mapRowToInvite(results);
+            invites = mapRowToInvite(results);
         }
-        return invite;
+        return invites;
     }
 
     @Override
-    public List<Invite> listInvite(int userId) {
-        List<Invite> invites = new ArrayList<>();
+    public List<Invites> listInvite(int userId) {
+        List<Invites> invites = new ArrayList<>();
 
         String sql = "SELECT * FROM invite " +
                 "JOIN account ON invite.account_from = account.account_id " +
@@ -123,21 +123,21 @@ public class JdbcInviteDao implements InviteDao{
     }
 
     @Override
-    public List<Invite> getInvitesByUserId(@PathVariable int senderId) throws Exception {
-        List<Invite> invites = new ArrayList<>();
-        String sql = "SELECT * FROM invites WHERE sender_id = ? ;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, senderId);
+    public List<Invites> getInvitesByUserId(@PathVariable int sender_Id) throws Exception {
+        List<Invites> invites = new ArrayList<>();
+        String sql = "SELECT sender_id, invite_id, event, location, food FROM invites " + "WHERE sender_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, sender_Id);
         while (results.next()) {
-            Invite invite = mapRowToInvite(results);
+            Invites invite = mapRowToInvite(results);
             invites.add(invite);
         }
         if (invites.size() == 0) {
-            throw new Exception("Invalid user id : " + senderId);
+            throw new Exception("Invalid user id : " + sender_Id);
         }
         return invites;
     }
     @Override
-    public int createInvite(@RequestBody Invite invite) {
+    public int createInvite(@RequestBody Invites invites) {
         boolean inviteCreated = false;
         GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
         String id_column = "invite_id";
@@ -148,10 +148,10 @@ public class JdbcInviteDao implements InviteDao{
 
         inviteCreated = jdbcTemplate.update(con -> {
             PreparedStatement statement = con.prepareStatement(createNewInvite, new String[] { id_column });
-            statement.setInt(1, invite.getSenderId());
-            statement.setString(2, invite.getEvent());
-            statement.setString(3, invite.getLocation());
-            statement.setString(4, invite.getFood ());
+            statement.setInt(1, invites.getSenderId());
+            statement.setString(2, invites.getEvent());
+            statement.setString(3, invites.getLocation());
+            statement.setString(4, invites.getFood());
             return statement;
         }, keyHolder) == 1;
 
@@ -170,8 +170,8 @@ public class JdbcInviteDao implements InviteDao{
     }
 
     @Override
-    public Invite getByInviteId(@PathVariable int invite_id) throws Exception {
-        String sql = "SELECT * FROM invites WHERE invite_id = ?";
+    public Invites getByInviteId(@PathVariable int invite_id) throws Exception {
+        String sql = "SELECT invite_id, sender_id, event, location, food FROM invites WHERE invite_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, invite_id);
         if (results.next()) {
             return mapRowToInvite(results);
@@ -180,26 +180,26 @@ public class JdbcInviteDao implements InviteDao{
         }
     }
     @Override
-    public void updateInvite(@RequestBody Invite invite) {
-        String sql = "update invites Set (sender_id, event, location, food)  VALUES (?,?,?,?) WHERE invite_id = ?";
-        jdbcTemplate.update(sql, invite.getSenderId(), invite.getEvent(), invite.getInviteId());
+    public void updateInvite(@RequestBody Invites invites) {
+        String sql = "UPDATE invites SET (sender_id, event, location, food)  VALUES (?,?,?,?) WHERE invite_id = ?";
+        jdbcTemplate.update(sql, invites.getSenderId(), invites.getEvent(), invites.getInviteId());
     }
 
 
-    private Invite mapRowToInvite(SqlRowSet srs) {
-        Invite invite = new Invite();
-        invite.setId(srs.getInt("invite_id"));
-        invite.setToAccountId(srs.getInt("account_to"));
-        invite.setFromAccountId(srs.getInt("account_from"));
-        invite.setInviteStatusId(srs.getInt("invite_status_id"));
-        invite.setInviteId(srs.getInt("inviteId"));
-        invite.setInviteId(srs.getInt("invite_id"));
-        invite.setSenderId(srs.getInt("sender_id"));
-        invite.setEvent(srs.getString("event"));
-        invite.setLocation(srs.getString("location"));
-        invite.setFood(srs.getString("food"));
+    private Invites mapRowToInvite(SqlRowSet srs) {
+        Invites invites = new Invites();
+        invites.setId(srs.getInt("invite_id"));
+        invites.setToAccountId(srs.getInt("account_to"));
+        invites.setFromAccountId(srs.getInt("account_from"));
+        invites.setInviteStatusId(srs.getInt("invite_status_id"));
+//        invites.setInviteId(srs.getInt("inviteId"));
+        invites.setInviteId(srs.getInt("invite_id"));
+        invites.setSenderId(srs.getInt("sender_id"));
+        invites.setEvent(srs.getString("event"));
+        invites.setLocation(srs.getString("location"));
+        invites.setFood(srs.getString("food"));
 
-        return invite;
+        return invites;
     }
 
 }

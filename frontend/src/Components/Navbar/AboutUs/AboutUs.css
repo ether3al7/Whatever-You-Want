@@ -68,7 +68,7 @@
     text-align: center;
     color: white;
     height: 0px;
-    /* height: calc(100vh - 959.7px); */
+    height: calc(100vh - 948px);
     /* height: calc(100vh - 122rem); */
 }
 

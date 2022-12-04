@@ -1,12 +1,14 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.InviteDao;
-import com.techelevator.model.Invite;
+import com.techelevator.model.Invites;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
     @CrossOrigin
     @RestController
@@ -18,23 +20,23 @@ import java.util.List;
         private InviteDao inviteDao;
 
         @GetMapping(path = "/sender/{sender_id}")
-        public List<Invite> getBySenderId(@PathVariable Integer sender_id) throws Exception {
-            List<Invite> invites = null;
+        public List<Invites> getBySenderId(@PathVariable Integer sender_id) throws Exception {
+            List<Invites> invites = new ArrayList<>();
             invites = inviteDao.getInvitesByUserId(sender_id);
             return invites;
         }
 
 
         @PostMapping(path = "")
-        public int createInvite(@RequestBody Invite invite) {
-            int invite_id = inviteDao.createInvite(invite);
+        public int createInvite(@RequestBody Invites invites) {
+            int invite_id = inviteDao.createInvite(invites);
             return invite_id;
         }
 
 
         @PutMapping(path = "")
-        public void updateInvite(@RequestBody Invite invite) {
-            inviteDao.updateInvite(invite);
+        public void updateInvite(@RequestBody Invites invites) {
+            inviteDao.updateInvite(invites);
         }
 
 
@@ -45,7 +47,7 @@ import java.util.List;
 
 
         @GetMapping(path = "/{invite_id}")
-        public Invite getInviteById(@PathVariable Integer invite_id) throws Exception {
+        public Invites getInviteById(@PathVariable Integer invite_id) throws Exception {
             return inviteDao.getByInviteId(invite_id);
         }
 

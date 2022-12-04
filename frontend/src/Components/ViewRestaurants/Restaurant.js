@@ -1,4 +1,5 @@
 import React from "react"
+import './ViewRestaurants.css';
 
 export default function Restaurants(props) {
 
@@ -33,49 +34,95 @@ export default function Restaurants(props) {
 // }
 
 
-    let isOpen
+//     let isOpen
 
-    const date = new Date()
-    const hours = date.getHours() 
-    const minutes = date.getMinutes()
-    const time = date.getTime()
-    const seconds = date.getSeconds()
-    const callNumber = "tel:" + props.phone
+//     const date = new Date()
+//     const hours = date.getHours() 
+//     const minutes = date.getMinutes()
+//     const time = date.getTime()
+//     const seconds = date.getSeconds()
+//     const callNumber = "tel:" + props.phone
 
 
-    if (hours >= props.opening_time && hours < props.closing_time){
-        isOpen = true;
-    } else {
-        isOpen = false;
-    }
+//     if (hours >= props.opening_time && hours < props.closing_time){
+//         isOpen = true;
+//     } else {
+//         isOpen = false;
+//     }
 
-    let closingTwelveHour
+//     let closingTwelveHour
 
-    if (props.closingTime > 12){
-        closingTwelveHour = props.closing_time - 12;
-    } else {
-        closingTwelveHour = props.closing_time;
-    }
-    console.log("Time " + time + "Other " + hours + minutes + "sec" + seconds)
+//     if (props.closingTime > 12){
+//         closingTwelveHour = props.closing_time - 12;
+//     } else {
+//         closingTwelveHour = props.closing_time;
+//     }
+//     console.log("Time " + time + "Other " + hours + minutes + "sec" + seconds)
     
-    return(
-        <div className="restaurant">
-            <section className="img-section">
-                {props.image && <img className="img" alt={props.name} src={props.image}/>}
-            </section>
-            <section className="info">
-                <h2>{props.name}</h2>
-                <h3>Type: {props.food}</h3>
-                <h3>Location: {props.address}</h3>
-                <h3>Zipcode: {props.city}</h3>
-                <h3>Zipcode: {props.zipcode}</h3>
-                <h3>Hours: {props.opening_time}:00am - {closingTwelveHour}:00pm</h3>
-                <h3 className="sign">{isOpen ? 'Open Now' : 'Closed'}</h3>  
-            </section>
-            <section className="call-btn">
-            {props.phone && <a href={callNumber}><img className="call-img" alt="Call" src={require("././images/call.png")}/></a>}
-            </section>
+//     return(
+//         <div className="restaurant">
+//             <section className="img-section">
+//                 {props.image && <img className="img" alt={props.name} src={props.image}/>}
+//             </section>
+//             <section className="info">
+//                 <h2>{props.name}</h2>
+//                 <h3>Type: {props.food}</h3>
+//                 <h3>Location: {props.address}</h3>
+//                 <h3>Zipcode: {props.city}</h3>
+//                 <h3>Zipcode: {props.zipcode}</h3>
+//                 <h3>Hours: {props.opening_time}:00am - {closingTwelveHour}:00pm</h3>
+//                 <h3 className="sign">{isOpen ? 'Open Now' : 'Closed'}</h3>  
+//             </section>
+//             <section className="call-btn">
+//             {props.phone && <a href={callNumber}><img className="call-img" alt="Call" src={require("././images/call.png")}/></a>}
+//             </section>
 
-        </div>
-    )
+//         </div>
+//     )
+// }
+
+let isOpen
+
+const date = new Date()
+const hours = date.getHours() 
+const minutes = date.getMinutes()
+const time = date.getTime()
+const seconds = date.getSeconds()
+const callNumber = "tel:" + props.phone
+
+
+if (hours >= props.openingTime && hours < props.closingTime){
+    isOpen = true;
+} else {
+    isOpen = false;
+}
+
+let closingTwelveHour
+
+if (props.closingTime > 12){
+    closingTwelveHour = props.closingTime - 12;
+} else {
+    closingTwelveHour = props.closingTime;
+}
+console.log("Time " + time + "Other " + hours + minutes + "sec" + seconds)
+
+return(
+    
+    <div className="restaurant">
+        <section className="img-section">
+            {props.imageUrl && <img className="img" src={props.imageUrl}/>}
+        </section>
+        <section className="info1">
+            <h2>{props.name}</h2>
+            <h3>Type: {props.type}</h3>
+            <h3>Location: {props.address}</h3>
+            <h3>Hours: {props.openingTime}:00am - {closingTwelveHour}:00pm</h3>
+            <h3 className="sign">{isOpen ? 'Open Now' : 'Closed'}</h3>  
+        </section>
+        <section className="call-btn">
+        {props.phone && <a href={callNumber}><img className="call-img" src={require("././images/call.png")}/></a>}
+        </section>
+
+    </div>
+)
 }

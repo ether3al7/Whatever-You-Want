@@ -119,7 +119,7 @@ import { BEARER_TOKEN } from '../../services/config';
 			<>
 	        
 				Search to create invite results
-	        <input placeholder="food type" onChange={this.handleTerm} className='searchbar-invite'/>
+	        {/* <input placeholder="food type" onChange={this.handleTerm} className='searchbar-invite'/> */}
 	        <input placeholder="location" onChange={this.handleLocation} className='searchbar-invite'/>
 	        <input placeholder="receiver" onChange={this.handleReceiver} className='searchbar-invite'/>
 	            <button onClick={this.onSave}className='save'>Save</button>

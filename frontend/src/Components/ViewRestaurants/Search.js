@@ -1,10 +1,12 @@
 import { checkPropTypes } from 'prop-types'
-import React from 'react'
+import React, { useState } from 'react'
 import './Search.css';
 import { useSelector } from 'react-redux';
 import { appendTooltip } from 'rsuite/esm/utils';
+import axios from 'axios';
 
 export default function Search(props) {
+    const [data, setData] = useState([]);
 
     const token = useSelector((state) => state.token.token)
     // const express = require("express")
@@ -17,9 +19,27 @@ export default function Search(props) {
 
     function submitLocationToApi(){
         /** Code to fetch from Api */
-        fetch(`http://localhost:8081/restaurants/all`)
-        .then(res => res.json())
-        .then(data => props.setList(data))
+        fetch(`http://localhost:3000/restaurants/` ,
+        {
+            
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token, 
+                'Access-Control-Allow-Origin' : '*',
+                        'Access-Control-Allow-Methods': '*', 
+                        'Access-Control-Allow-Headers': '*',
+                
+            }
+        }
+        )
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        // .then(res => res.json())
+        // .then(data => props.setList(data))
 
         props.setNeedSearch(prevNeedSearch => prevNeedSearch = !prevNeedSearch)
         props.setNeedView(prevNeedView => prevNeedView = !prevNeedView)
@@ -27,6 +47,7 @@ export default function Search(props) {
         
     function handleClick(event){
         event.preventDefault()
+        // submitLocationToApi(props.location)
         submitLocationToApi(props.location)
         
     }
@@ -73,13 +94,3 @@ export default function Search(props) {
     )
 }
 
-
- // {
-            
-            // headers: {
-            //     'Content-Type': 'application/json',
-            //     'Authorization': 'Bearer ' + token, 
-            //     'Access-Control-Allow-Credentials' : 'true',
-                
-            // }
-        // }

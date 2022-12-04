@@ -1,7 +1,6 @@
 package com.techelevator.dao;
 
-import com.techelevator.model.InvalidInviteException;
-import com.techelevator.model.Invite;
+import com.techelevator.model.Invites;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -11,11 +10,11 @@ import java.util.List;
 
 
 public interface InviteDao {
-    Invite getInvite(int id);
+    Invites getInvite(int id);
 
-    List<Invite> listInvite(int id);
+    List<Invites> listInvite(int id);
 
-    List<Invite> getInvitesByUserId(@PathVariable int senderId) throws Exception;
+    List<Invites> getInvitesByUserId(@PathVariable int senderId) throws Exception;
 
 //    Invite createInvite(Invite invite) throws InvalidInviteException;
 
@@ -26,11 +25,11 @@ public interface InviteDao {
     String getUserNameFromId(int InviteId, String currentUser);
 
 
-    int createInvite(@RequestBody Invite invite);
+    int createInvite(@RequestBody Invites invites);
 
     void deleteInvite(@PathVariable int inviteId);
 
-    Invite getByInviteId(@PathVariable int inviteId) throws Exception;
+    Invites getByInviteId(@PathVariable int inviteId) throws Exception;
 
-    void updateInvite(@RequestBody Invite invite);
+    void updateInvite(@RequestBody Invites invites);
 }

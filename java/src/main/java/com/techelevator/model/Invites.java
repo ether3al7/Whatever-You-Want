@@ -1,6 +1,6 @@
 package com.techelevator.model;
 
-public class Invite {
+public class Invites {
 
     private int id;
 
@@ -55,7 +55,7 @@ public class Invite {
         this.food = food;
     }
 
-    public Invite(){};
+    public Invites(){};
 
     public int getId() {
         return id;

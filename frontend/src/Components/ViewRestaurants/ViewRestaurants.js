@@ -5,11 +5,11 @@ import './ViewRestaurants.css';
 
 export default function ViewRestaurants(props){
     // const restaurantList = props.restaurants;
-    
-
+    const arr = {};
+    const rest = arr.restaurants;
+  
 
     const restaurants = props.restaurants.map(
-        // const restaurants = restaurantList.map(
     
         restaurant =>{
            return (
@@ -22,7 +22,7 @@ export default function ViewRestaurants(props){
      )
 
     return (
-        <div>
+        <div className="list">
             {restaurants}
         </div>
     )

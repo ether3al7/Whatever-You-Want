@@ -2,23 +2,18 @@ package com.techelevator.controller;
 
 import com.techelevator.model.Account;
 import com.techelevator.dao.AccountDao;
-import com.techelevator.model.Invite;
+import com.techelevator.model.Invites;
 import com.techelevator.dao.InviteDao;
 import com.techelevator.model.User;
 import com.techelevator.dao.UserDao;
 
 import org.springframework.web.bind.annotation.*;
 
-import org.apache.logging.log4j.message.Message;
-import org.springframework.http.HttpMessage;
-import org.springframework.http.HttpStatus;
-
-import javax.validation.Valid;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@CrossOrigin
 public class RTController {
 
     private AccountDao accountDao;
@@ -62,8 +57,8 @@ public class RTController {
     }
 
     @RequestMapping(path = "/{id}/pending_invite", method = RequestMethod.GET)
-    public List<Invite> getPendingInvites(@PathVariable("id") int userId){
-        List<Invite> invites = new ArrayList<>();
+    public List<Invites> getPendingInvites(@PathVariable("id") int userId){
+        List<Invites> invites = new ArrayList<>();
         return invites;
     }
 
